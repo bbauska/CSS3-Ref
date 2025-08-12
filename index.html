@@ -1,0 +1,1269 @@
+<!DOCTYPE html>
+<html lang="en" >
+<head>
+  <meta charset="UTF-8">
+  <title>CSS3 Ref</title>
+  <link rel="stylesheet" href="./style.css">
+
+</head>
+<body>
+<h3><a href="#ch1-1-1">1.1 Adding Styles to HTML</a></h3>
+<h3><a href="#ch1-2-1">1.2 Rule Structure</a></h3>
+<h3><a href="#ch1-3-1">1.3 At-rules</a></h3>
+<h3><a href="#ch1-4-1">1.4 Comments</a></h3>
+<h3><a href="#ch1-5-1">1.5 Style Precedence</a></h3>
+<h3><a href="#ch1-6-1">1.6 Element Classification</a></h3>
+<h3><a href="#ch1-7-1">1.7 Element Display Roles</a></h3>
+<h3><a href="#ch1-8-1">1.8 Basic Visual Layout</a></h3>
+<h3><a href="#ch1-9-1">1.9 Floating</a></h3>
+<h3><a href="#ch1-10-1">1.10 Positioning</a></h3>
+<h3><a href="#ch1-11-1">1.11 Flexible Box Layout</a></h3>
+<h3><a href="#ch1-12-1">1.12 Grid Layout</a></h3>
+<h3><a href="#ch1-13-1">1.13 Table Layout</a></h3>
+  <main>
+    <div>
+      <h1>CSS3 Ref</h1>
+      <p><em>Want an explanation of how this works?<br />&rarr; 
+	    <a href="https://www.cellardoor.org/" 
+		  target="_top">https://www.cellardoor.org/</a></em>
+	  </p>
+      <section id="ch1-basic-concepts">
+        <h2>Chapter 1: Basic Concepts</h2>
+        <p>…</p>
+      </section>
+      <section id="ch1-1-adding-style">
+        <h2>1.1 Adding Style to HTML</h2>
+<!--~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~-->
+<p>Styles can be applied to documents in three distinct ways, as discussed in the 
+following sections.</p>
+<!--~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~-->
+<h4>Inline Styles</h4>
+<!--~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~-->
+<p>In HTML, style information can be specified for an individual element via the style 
+attribute. The value of a style attribute is a <i>declaration block</i> (see the section 
+"Rule Structure" on page 5) without the curly braces:</p>
+<pre>
+&lt;p style=&quot;color: red; background: yellow;&quot;&gt;Look out! 
+This text is alarmingly presented!&lt;/p&gt;
+</pre>
+<p>Note that as of this writing, only the content of a single declaration block can be 
+used as a style attribute value. For example, it is not possible to place hover styles 
+(using :hover) in a style attribute, nor can &#64;import be used in this context.</p>
+<p>Although typical XML document languages (such as SVG) support the style attribute, 
+it is unlikely that <i>all</i> XML languages will support a similar capability. Because 
+of this---and especially because it encourages poor authoring practices---authors are 
+discouraged from using the style attribute, and thus inline styles.</p>
+<!-- page 2 -->
+<!--~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~-->
+<h4>Embedded Stylesheets</h4>
+<!--~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~-->
+<p>A stylesheet can be embedded within an HTML document using the style element:</p>
+<pre>
+<b>&lt;html&gt;&lt;head&gt;&lt;title&gt;</b>Stylin&apos;!<b>&lt;/title&gt;</b>
+<b>&lt;style</b> type=&quot;text/css&quot;<b>&gt;</b>
+<b>h1</b> {<b>color</b>: purple;}
+<b>p</b> {<b>font-size</b>: smaller; <b>color</b>: gray;}
+<b>&lt;/style&gt;</b>
+<b>&lt;/head&gt;</b> &hellip;
+<b>&lt;/html&gt;</b>
+</pre>
+<p>XML-based languages may or may not provide an equivalent capability; always check the 
+document type definition (DTD) to be certain. While style elements are often found inside 
+the head element, as shown in the preceding example, this is not required. Sometimes 
+stylesheets are embedded near the end of a document for performance reasons.</p>
+<!--~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~-->
+<h4>External Stylesheets</h4>
+<!--~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~-->
+<p>Styles can be stored in a separate file. The primary advantage to using a separate 
+file is that when commonly used styles are collected in a single file, all pages using 
+those styles can be updated by editing a single stylesheet. A downside is that it's 
+generally more efficient to embed all styles (and scripts) into an HTML document in 
+order to reduce network calls, although this downside will disappear as HTTP/2 usage
+increases.<p>
+<!--~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~-->
+<h4>An external stylesheet can be referenced in one of three ways.</h4>
+<!--~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~-->
+<h5>1. <b>&#64;import directive</b></h5>
+<!--~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~-->
+<p>One or more &#64;import directives can be placed at the beginning of any stylesheet. 
+For HTML documents, this is done within an embedded stylesheet:</p>
+<!-- page 3 -->
+
+<pre>
+<b>&lt;head&gt;&lt;title&gt;</b>My Document<b>&lt;/title&gt;</b>
+<b>&lt;style</b> type=&quot;text/css&quot;<b>&gt;</b>
+<b>&#64;import</b> url(site.css);
+<b>&#64;import</b> url(navbar.css);
+<b>&#64;import</b> url(footer.css) <b>screen</b> <b>and</b> (<b>min-width</b>: 960px);
+<b>body</b> {<b>background</b>: yellow;}
+<b>&lt;/style&gt;</b>
+<b>&lt;/head&gt;</b>
+</pre>
+<p>Note that &#64;import directives can appear at the top (and, according to
+the specification, <i>only</i> at the top) of any stylesheet. Thus, one
+stylesheet could import another, which in turn would import a third.</p>
+<!--~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~-->
+<h5>2. link element</h5>
+<!--~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~-->
+<p>In HTML documents, the link element can be used to associate a
+stylesheet with a document. Multiple link elements are permitted. The
+media attribute can be used to restrict a stylesheet to one or more
+media environments:</p>
+<pre>
+<b>&lt;head&gt;</b>
+<b>&lt;title&gt;</b>A Document<b>&lt;/title&gt;</b>
+<b>&lt;link</b> rel=&quot;stylesheet&quot; type=&quot;text/css&quot; href=&quot;basic.css&quot;
+  media=&quot;all&quot;<b>&gt;</b>
+<b>&lt;link</b> rel=&quot;stylesheet&quot; type=&quot;text/css&quot; href=&quot;web.css&quot;
+  media=&quot;screen and (max-width: 960px)&quot;<b>&gt;</b>
+<b>&lt;link</b> rel=&quot;stylesheet&quot; type=&quot;text/css&quot; href=&quot;paper.css&quot;
+  media=&quot;print and (color-depth: 2)&quot;<b>&gt; &lt;/head&gt;</b>
+</pre>
+<p>It is also possible to link to alternate stylesheets, but few browsers provide a way 
+for users to make use of them. As of this writing, most or all known user agents load all 
+linked stylesheets, including the alternate stylesheets, regardless of whether the user 
+ever needs them.</p>
+<!--~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~-->
+<h5>xml-stylesheet processing instruction</h5>
+<!--~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~-->
+<p>In XML documents (such as XHTML documents sent with a MIME type of text/xml, 
+application/xml, or application/ xhtml+xml), an xml-stylesheet processing instruction 
+can be used to associate a stylesheet with a document. Any xmlstylesheet processing 
+instructions must be placed in the prolog of an XML document. Multiple xml-stylesheet 
+processing instructions are permitted. The media pseudo-attribute can be used to
+restrict a stylesheet to one or more forms of media:</p>
+<!-- page 4 -->
+<pre>
+&lt;?xml-stylesheet type=&quot;text/css&quot; href=&quot;basic.css&quot;
+  media=&quot;all&quot;?&gt;
+&lt;?xml-stylesheet type=&quot;text/css&quot; href=&quot;web.css&quot;
+  media=&quot;screen&quot;?&gt;
+&lt;?xml-stylesheet type=&quot;text/css&quot; href=&quot;paper.css&quot;
+  media=&quot;print&quot;?&gt;
+</pre>
+<!--~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~-->
+<h5>3. <b>HTTP Link headers</b></h5>
+<!--~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~-->
+<p>The last (and least common by far) way of associating an external stylesheet with your 
+pages is to use an HTTP Link header. This approach uses HTTP headers to replicate the 
+effects of a link element or &#64;import directive.</p>
+
+<p>Adding a line such as this to the <i>.htaccess</i> file at the root level of your 
+server will make this happen for all pages on the site, where /style.css is the server 
+path of the stylesheet to be loaded:</p>
+<pre>
+  &quot;&lt;/style.css&gt;;rel=stylesheet;type=text/css;media=all&quot;
+</pre>
+<!--~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~-->
+<h5>Explanation of the attributes:</h5>
+<!--~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~-->
+<pre>rel="stylesheet":</pre>
+
+<p>This attribute indicates that the linked file is a stylesheet, which defines how the 
+HTML content should be displayed.</p>
+
+<pre>href="style.css":</pre>
+
+<p>This attribute specifies the URL of the CSS file to be linked.</p>
+
+<pre>type="text/css":</pre>
+
+<p>This attribute specifies the MIME type of the linked file, indicating that it is 
+a CSS file. While technically redundant, it's good practice to include it for clarity.</p>
+
+<pre>media="all":</pre>
+
+<p>This attribute specifies that the stylesheet applies to all media types. This 
+means it will be applied to screens, printers, and any other media for which the 
+browser supports style sheets. If you want to target specific devices, you can use 
+other media types like screen, print, or speech or use media queries.</p>
+
+<p>As an alternative to using <i>.htaccess</i>, which has been known to cause performance 
+problems, you can edit your <i>httpd.conf</i> file to do the same thing:</p>
+
+<pre>
+&lt;Directory /usr/local/username/httpdocs&gt;
+  &quot;&lt;/style.css&gt;;rel=stylesheet;type=text/css;media=all&quot;
+&lt;/Directory&gt; 
+</pre>
+
+<p>where /usr/local/username/httpdocs is replaced with the Unix pathname of your 
+website's actual home directory, and /style.css is replaced with the location of the 
+stylesheet within that home directory.</p>
+
+<p>As of this writing, HTTP headers were not supported by all user agents, most notably 
+Internet Explorer and Safari. Thus, this technique is usually limited to production 
+environments based on other user agents, and the occasional Easter egg for Firefox and 
+Opera users.</p>
+        <p>…</p>
+      </section>
+      <section id="ch1-2-rul-structure">
+        <h2>1.2 Rule Structure</h2>
+<!--~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~-->
+<p>A stylesheet consists of one or more <i>rules</i> that describe how page elements 
+should be presented. Every rule has two fundamental parts: the <i>selector</i> and the 
+<i>declaration block</i>. Figure 1-1 illustrates the structure of a rule.</p>
+<!--~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~-->
+<!--~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ 01. rule structure ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~-->
+<p align="center">
+<img class="displayed"
+  src="/images/image001.png?raw=true"
+  title="Rule structure"
+  alt="Rule structure."
+  style="width:50%;" />
+</p>
+<!-- image001 rule structure -->
+<p style="text-align:center;"><i>Figure 1-1. Rule structure</i></p>
+<p>On the left side of the rule, we find the selector, which selects the parts of the 
+document to which the rule should be applied. Selectors can stand singly or be grouped as 
+a comma-separated list; e.g., to select the top three heading levels at once, the 
+selector group would be h1, h2, h3. On the right side of the rule, we have the 
+declaration block. A declaration block is made up of one or more <i>declarations</i>; 
+each declaration is a combination of a CSS <i>property</i> and a <i>value</i> of that
+property.</p>
+
+<p>The declaration block is always enclosed in curly braces. A declaration block can 
+contain several declarations; each declaration must be terminated with a semicolon (;). 
+The exception is the final declaration in a declaration block, for which the semicolon is 
+optional (though recommended).</p>
+
+<p>Each property, which represents a particular stylistic parameter, is separated from 
+its value by a colon (:). Property names in CSS are not case-sensitive. Legal values for 
+a property are defined by the property description. Chapter 4 provides details on 
+acceptable values for CSS properties.</p>
+        <p>…</p>
+      </section>
+      <section id="ch1-3-at-rules">
+        <h2>1.3 At-rules</h2>
+<p>A CSS <i>at-rule</i> is a statement or block of rules that begins with a specific 
+identifier preceded by an @ sign. These are:</p>
+<ul>
+  <li><b><mark>&#64;charset</mark></b><br>
+    Allows an author to define the encoding of the styles within the stylesheet (e.g., 
+    &#64;charset &quot;utf-8&quot;;). This enables authors to define the encoding of 
+    their styles even when they do not control the encoding of the file or system in 
+    which the styles are written. If multiple &#64;charset rules are declared, only the 
+    first will be used. This <i>must</i> be the first line of a stylesheet in which it 
+    appears, and <i>cannot</i> be preceded by any character. &#64;charset cannot be used 
+    in a stylesheet embedded in a document.</li>
+  <li><b><mark>&#64;import</mark></b><br>
+    Allows an author to include the styles of another stylesheet (see "@import directive" 
+    on page 2). Multiple &#64;import rules are permitted. Any &#64;import rules <i>must</i> 
+    appear before all other parts of the stylesheet except for &#64;charset.</li>
+  <li><b><mark>&#64;namespace</mark></b><br>
+    Allows an author to define an XML namespace to be used in selectors (e.g., 
+    &#64;namespace svg url(http:// www.w3.org/2000/svg);, permitting the use of 
+    svg&vert;a {color: black;} to select &lt;a&gt; elements within SVG files differently 
+    than &lt;a&gt; elements in HTML). Multiple &#64;namespace rules are permitted. Any 
+    &#64;namespace <i>must</i> appear before all other parts of the stylesheet except for 
+    &#64;charset and &#64;import rules.</li>
+</ul>
+<p>Besides these statements, there are a number of conditional at-rules.<br>
+These include:</p>
+
+<ul>
+  <li><b><mark>&#64;counter-style</mark></b><br>
+    Defines symbol and counting patterns used in CSS counters (e.g., the numbering of 
+    list items in an ordered list).</li>
+  <li><b><mark>&#64;font-face</mark></b><br>
+    Defines an external font to be downloaded and used, including definitions of the 
+    identifiers to be used in other style rules. This is part of what is often called 
+    "web fonts" or "custom fonts."</li>
+  <li><b><mark>&#64;keyframes</mark></b><br>
+    Defines the states of various steps in an animation sequence, grouped together under 
+    a unique identifier.</li>
+  <li><b><mark>&#64;media</mark></b><br>
+    Defines the media types and parameters in which a block of styles are to be applied: 
+    e.g., writing &#64;media (maxwidth: 600px) and then the styles to be used for smaller 
+    screens. This is the key to Responsive Web Design.</li>
+  <li><b><mark>&#64;supports</mark></b><br>
+    Defines the browser-support conditions under which a block of styles should be used: 
+    e.g., writing &#64;supports (display: grid) and then the styles that should be used 
+    in a CSS Grid--supporting browser.</li>
+</ul>
+<p>There are other proposed at-rules which are, as of early 2018, at various stages of 
+development. These include &#64;document, &#64;font-feature-values, &#64;page, and 
+&#64;viewport.</p>
+        <p>…</p>
+      </section>
+      <section id="ch1-4-comments">
+        <h2>1.4 Comments</h2>
+	<p>Including comments in CSS is simple. You open with /&ast; and end with &ast;/, like this:</p>
+<pre>/&ast; This is a comment! &ast;/</pre>
+<p>Comments can be multiple lines long:</p>
+<pre>/&ast; This is a comment!
+This is a continuation of the comment.
+And so is this. &ast;/</pre>
+<p>They can also occur anywhere within a stylesheet except in the middle of a property 
+name or value:</p>
+<!--~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~-->
+<h4>Comments</h4>
+<!--~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~-->
+<pre>
+<span style="color:darkblue"><b>h1</b></span><span style="color:lightblue">/&ast; heading-level-1 &ast;/ {color /&ast; foreground color &ast;/:</span>
+  <span style="color:darkblue">rgba</span>(<span style="color:orange">23,58,89,0.42</span>)<span style="color:lightblue">/&ast; RGB + opacity &ast;/;}</span>
+</pre>
+<p>HTML (properly SGML) comments &lt;!&dash;- such as this &dash;-&gt; are permitted in
+stylesheets so as to hide the styles from browsers so old that they don't understand HTML 
+3.2. They do <i>not</i> act as CSS comments; that is, anything contained in an HTML 
+comment will be seen and interpreted by the CSS parser.</p>
+
+        <p>…</p>
+      </section>
+      <section id="ch1-5-style-precedence">
+        <h2>1.5 Style Precedence</h2>
+<p>A single HTML document can import and link to multiple external stylesheets, contain 
+one or more embedded stylesheets, and make use of inline styles. In the process, it is 
+quite possible that some rules will conflict with one another. Cascading Style Sheets 
+uses a mechanism called the <i>cascade</i> to resolve any such conflicts and arrive at a 
+final set of styles to be applied to the document. Two key components of the cascade are 
+specificity and inheritance.</p>
+<!--~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~-->
+<h4>Specificity Calculations</h4>
+<!--~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~-->
+<p><i>Specificity</i> describes the weight of a selector and any declarations associated 
+with it. Table 1-1 shows how much each part of a selector contributes to the total 
+specificity of that selector.</p>
+<!--~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~-->
+<!--~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ 02. selector type specificity ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~-->
+<p align="center">
+<img class="displayed"
+  src="/images/image002.png?raw=true"
+  title="Selector type specificity"
+  alt="Selector type specificity."
+  style="width:40%;" />
+</p>
+<!-- image002 -->
+<p style="text-align:center;"><i>Table 1-1. Selector type specificity</i></p>
+
+<p>Specificity values are cumulative; thus, a selector containing two element identifiers 
+and a class identifier (e.g., div.aside p) has a specificity of 0,0,1,2. Specificity values 
+are sorted from right to left; thus, a selector containing 11 element identifiers (0,0,0,11) 
+has a lower specificity than a selector containing just a single class identifier (0,0,1,0).</p>
+
+<p>The !important directive gives a declaration more weight than nonimportant declarations. 
+The declaration retains the specificity of its selectors and is used only in comparison 
+with other important declarations.</p>
+<!--~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~-->
+<h4>Inheritance</h4>
+<!--~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~-->
+<p>The elements in a document form a treelike hierarchy, with the root element at the top 
+and the rest of the document structure spreading out below it (which makes it look more 
+like a tree root system, really). In an HTML document, the html element is at the top of 
+the tree, with the head and body elements descending from it. The rest of the document
+structure descends from those elements. In such a structure, elements lower down in the 
+tree are descendants of the ancestors, which are higher in the tree.</p>
+
+<p>CSS uses the document tree for the mechanism of <i>inheritance</i>, in which a style 
+applied to an element is inherited by its descendants. For example, if the body element 
+is set to have a color of red, that value propagates down the document tree to the elements 
+that descend from the body element. Inheritance is interrupted only by a conflicting style
+rule that applies directly to an element. Inherited values have no specificity at all 
+(which is <i>not</i> the same as having zero specificity).</p>
+
+<p>Note that some properties are not inherited. A property will always define whether it 
+is inherited. Some examples of noninherited properties are padding, border, margin, and 
+background.</p>
+<!--~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~-->
+<h4>The Cascade</h4>
+<!--~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~-->
+<p>The cascade is how CSS resolves conflicts between styles; in other words, it is the 
+mechanism by which a user agent decides, for example, what color to make an element when 
+two different rules apply to it and each one tries to set a different color.<br>
+Here's how the cascade works:</p>
+<ol>
+  <li>Find all rules with a selector that matches a given element.</li>
+  <li>Sort all declarations applying to the given element by <i>explicit weight</i>. 
+    Those rules that are marked !important have a higher explicit weight than those 
+    that are not.</li>
+  <li>Sort all declarations applying to the given element by <i>origin</i>. There are 
+    three basic origins: author, reader, and user agent. Under normal circumstances, 
+    the author's styles win out over the reader's styles. Howerver, !important reader 
+    styles are stronger than any other styles, including !important author styles. 
+    Both author and reader styles override the user agent's default styles.</li>
+  <li>Sort all declarations applying to the given element by <i>specificity</i>. Those 
+    elements with a higher specificity have more weight than those with lower specificity.</li>
+  <li>Sort all declarations applying to the given element by <i>order</i>. The later a 
+    declaration appears in the stylesheet or document, the more weight it is given. 
+    Declarations that appear in an imported stylesheet are considered to come before 
+    all declarations within the stylesheet that imports them.</li>
+</ol>
+<p>Any presentational hints that come from non-CSS sources (e.g., the preference dialog 
+within a browser) are given the same weight as the user agent's default styles (see 
+step 2 above).</p>
+
+        <p>…</p>
+      </section>
+      <section id="ch1-6-element-class">
+        <h2>1.6 Element Classification</h2>
+<p>Broadly speaking, CSS groups elements into two types: <i>nonreplaced</i> and <i>replaced</i>. 
+Although the types may seem rather abstract, there actually are some profound differences in how 
+the two types of elements are presented. These differences are explored in detail in Chapter 7 of 
+<a href="http://shop.oreilly.com/product/0636920012726.do" target="_blank" rel="noreferrer noopener">
+<i>CSS: The</i> <i>Definitive Guide</i>, 4th Edition</a> (O'Reilly).</p>
+<!--~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~-->
+<h4>Nonreplaced Elements</h4>
+<!--~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~-->
+<p>The majority of HTML elements are <i>nonreplaced elements</i>, which means their content is 
+presented by the user agent inside a box generated by the element itself. For example, 
+&lt;span&gt;hi there&lt;/span&gt; is a nonreplaced element, and the text hi there will be 
+displayed by the user agent. Paragraphs, headings, table cells, lists, and almost everything
+else in HTML are nonreplaced elements.</p>
+<!--~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~-->
+<h4>Replaced Elements</h4>
+<!--~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~-->
+<p>In contrast, <i>replaced elements</i> are those whose content is replaced by something 
+not directly represented by document content. The most familiar HTML example is the img 
+element, which is replaced by an image file external to the document itself. In fact, 
+img itself has no actual content, as we can see by considering a simple example:</p>
+<pre>
+  <b>&lt;img</b> src=&quot;howdy.gif&quot; alt=&quot;Hi&quot;<b>&gt;</b>
+</pre>
+<p>There is no content contained in the element---only an element name and attributes. 
+Only by replacing the element's lack of content with content found through other means 
+(in this case, loading an external image specified by the src attribute) can the element 
+have any presentation at all. Another example is the input element, which may be replaced 
+with a radio button, checkbox, or text input box, depending on its type. Replaced 
+elements also generate boxes in their display.</p>
+
+        <p>…</p>
+      </section>
+      <section id="ch1-7-element-display-roles">
+        <h2>1.7 Element Display Roles</h2>
+<p>In addition to being replaced or not, there are two basic types of element display roles 
+in CSS: <i>block-level</i> and <i>inline-level</i>. All CSS display values fall into one 
+of these two categories. It can be important to know which general role a box falls into, 
+since some properties only apply to one type or the other.</p>
+<!--~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~-->
+<h4>Block-Level</h4>
+<!--~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~-->
+<p><i>Block-level boxes</i> are those where the element box (by default) fills its parent 
+element's content area width and cannot have other elements to its sides. In other words, 
+block-level elements generate "breaks" before and after the element box. The most 
+familiar block elements from HTML are p and div. Replaced elements can be block-level 
+elements but usually are not.</p>
+
+<p>List items are a special case of block-level elements. In addition to behaving in 
+a manner consistent with other block elements, they generate a marker---typically a 
+bullet for unordered lists or a number for ordered lists---which is "attached" to 
+the element box. Except for the presence of this marker, list items are identical 
+to other block elements.</p>
+
+<p>As of early 2018, the display values that create block boxes are block, list-item, 
+table, table-row-group, table-headergroup, table-footer-group, table-column-group, 
+table-row, table-column, table-cell, table-caption, flex, and grid.</p>
+<!--~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~-->
+<h4>Inline-Level</h4>
+<!--~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~-->
+<p><i>Inline-level</i> boxes are those where an element box is generated within a line of 
+text and does not break up the flow of that line. Perhaps the best-known inline element 
+is the a element in HTML. Other examples are span and em. These elements do not generate 
+a break before or after themselves, so they can appear within the content of another 
+element without disrupting its display.</p>
+
+<p>Note that although the CSS block and inline elements have a great deal in common with 
+HTML block- and inline-level elements, there is an important difference. In HTML, block-
+level elements cannot descend from inline-level elements, whereas in CSS, there is no 
+restriction on how display roles can be nested within each other.</p>
+
+<p>The display values that create inline boxes are: inline, inlineblock, inline-table, 
+and ruby. As of this writing, it was not explicitly defined that the various Ruby-related 
+values (e.g., ruby-text) also generate inline boxes, but this seems the most likely 
+outcome.</p>
+
+        <p>…</p>
+      </section>
+      <section id="ch1-8-basic-visual-layout">
+        <h2>1.8 Basic Visual Layout</h2>
+<p>CSS defines algorithms for laying out any element in a document. These algorithms form 
+the underpinnings of visual presentation in CSS. There are two primary kinds of layout, 
+each with very different behaviors: <i>block-level</i> and <i>inline-level</i> layout.</p>
+<!--~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~-->
+<h4>Block-Level Layout</h4>
+<!--~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~-->
+<p>A block-level box in CSS generates a rectangular box called the <i>element box</i>, 
+which describes the amount of space occupied by an element. Figure 1-2 shows the 
+components of an element box.</p>
+<!--~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~-->
+<!--~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ 03. the complete box model ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~-->
+<p align="center">
+<img class="displayed"
+  src="/images/image003.png?raw=true"
+  title="The complete box model"
+  alt="The complete box model."
+  style="width:60%;" />
+</p>
+<!-- image003 -->
+<p style="text-align:center;"><i>Figure 1-2. The complete box model</i></p>
+<!--~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~-->
+<h4>The following rules apply to an element box:</h4>
+<!--~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~-->
+<ul>
+  <li>By default, the background of the element box extends to the outer edge of the 
+    border, thus filling the content, padding, and border areas (though this can be 
+    changed with background-clip). If the border has any transparent portions (e.g., it 
+    is dotted or dashed), the element background will be visible in those portions. The
+    background does not extend into the margin areas of the box. Any outlines are drawn 
+    in the margin area and do not affect layout.</li>
+  <li>Only the margins, height, and width of an element box may be set to auto.</li>
+  <li>Only margins can be given negative values.</li>
+  <li>The padding and border widths of the element box default to 0 (zero), and the 
+    border style defaults to none.</li>
+  <li>If box-sizing is content-box (the default value), the property width defines only 
+    the width of the content area; any padding, borders, or margins are added to it. The 
+    same is true for height with respect to the height.</li>
+  <li>If box-sizing is padding-box, the property width defines the total width of the 
+    content and the padding. Any borders and margins are added to it. The same is true 
+    for height with respect to the height.</li>
+  <li>If box-sizing is border-box, the property width defines the total width of the 
+    content, padding, and borders; any margins are added to it. The same is true for 
+    height with respect to the height.</li>
+</ul>
+<!--~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~-->
+<h4>Inline Layout</h4>
+<!--~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~-->
+<p>An inline-level box in CSS generates one or more rectangular boxes called <i>inline 
+boxes</i>. The following rules apply to inline boxes:</p>
+<ul>
+  <li>width and height do not apply to nonreplaced inline boxes.</li>
+  <li>For the properties left, right, top, bottom, margin-left, margin-right, 
+    margin-top, and margin-bottom, any value of auto is converted to 0 (zero).</li>
+  <li>For replaced inline boxes, the following rules apply:
+    <ul>
+      <li>If height and width are both auto and the element has an intrinsic
+      width (e.g., an image), the value of width is equal to the element's
+      intrinsic width. The same holds true for height.</li>
+      <li>If height and width are both auto and the element does not have an
+      intrinsic width but does have an intrinsic height and layout ratio,
+      then width is set to be the intrinsic height times the ratio.</li>
+      <li>If height and width are both auto and the element does not have an
+      intrinsic height but does have an intrinsic width and layout ratio,
+      then height is set to be the intrinsic width divided by the ratio.</li>
+    </ul>
+  </li>
+</ul>
+<p>There are a few rules even more obscure than those last two; see 
+<a href="http://w3.org/TR/css3-box/#inline-replaced" target="_blank" rel="noreferrer noopener">
+the CSS box model documentation</a> for details.</p>
+
+<p>All inline elements have a line-height, which has a great deal to do
+with how the elements are displayed. The height of a line of text is
+determined by taking the following factors into account:</p>
+<!--~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~-->
+<h5><i>Anonymous text</i></h5>
+<!--~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~-->
+<ul style="list-style: none;">
+  <li>Any string of characters not contained within an inline element. Thus, in the markup:<br>
+
+      <b>&lt;p&gt;</b>I&apos;m <b>&lt;em&gt;</b>so<b>&lt;/em&gt;</b> happy!<b>&lt;/p&gt;</b><br>
+
+    the sequences "I'm " and " happy!" are anonymous text. Note that the spaces are part 
+    of the anonymous text, as a space is a character like any other.</li>
+</ul>
+<!--~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~-->
+<h5><i>Em-box</i></h5>
+<!--~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~-->
+<ul>
+  <li>The space taken up by a capital letter M in the given font; otherwise known as 
+    the character box. Actual glyphs can be taller or shorter than their em-boxes, as 
+    discussed in Chapter 5 of <a href="http://shop.oreilly.com/product/0636920012726.do">
+    <i>CSS: The Definitive Guide</i></a>, the value of font-size determines the height 
+    of each em-box.</li>
+</ul>
+<!--~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~-->
+<h5><i>Content area</i></h5>
+<!--~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~-->
+<ul>
+  <li>In nonreplaced elements, this can be the box described by the em-boxes of every 
+    character in the element, strung together, or else the box described by the character 
+    glyphs in the element. In CSS2.1 and later, user agents can choose either. This text 
+    uses the em-box definition for simplicity's sake. In replaced elements, the content 
+    area is the intrinsic height of the element plus any margins, borders, or padding.</li>
+</ul>
+<!--~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~-->
+<h5><i>Leading</i></h5>
+<!--~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~-->
+<ul>
+  <li>The difference between the values of font-size and lineheight. Half this difference 
+    is applied to the top and half to the bottom of the content area. These additions to 
+    the content area are called, not surprisingly, <i>half-leading</i>. Leading is 
+    applied only to nonreplaced elements.</li>
+</ul>
+<!--~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~-->
+<h5><i>Inline box</i></h5>
+<!--~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~-->
+<ul>
+  <li>The box described by the addition of the leading to the content area. For nonreplaced 
+    elements, the height of the inline box of an element will be equal to the value for 
+    line-height. For replaced elements, the height of the inline box of an element will be 
+    equal to the content area, as leading is not applied to replaced elements.</li>
+</ul>
+<!--~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~-->
+<h5><i>Line box</i></h5>
+<!--~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~-->
+<ul>
+  <li>The shortest box that bounds the highest and lowest points of the inline boxes that 
+    are found in the line. In other words, the top edge of the line box will be placed 
+    along the top of the highest inline box top, and the bottom of the line box is placed 
+    along the bottom of the lowest inline box bottom. (See Figure 1-3).</li>
+</ul>
+<!--~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~-->
+<!--~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ 04. inline layout details ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~-->
+<p align="center">
+<img class="displayed"
+  src="/images/image004.png?raw=true"
+  title="Inline layout details"
+  alt="Inline layout details."
+  style="width:50%;" />
+</p>
+<p style="text-align:center;"><i>Figure 1-3. Inline layout details</i></p>
+
+        <p>…</p>
+      </section>
+      <section id="ch1-9-floating">
+        <h2>1.9 Floating</h2>
+<p>Floating allows an element to be placed to the left or right of its containing block 
+(which is the nearest block-level ancestor element), with following content flowing 
+around the element. Any floated element automatically generates a block box, regardless 
+of what type of box it would generate if not floated. A floated element is placed 
+according to the following rules:</p>
+<ul>
+  <li>The left (or right) outer edge of a floated element may not be to the left (or right) 
+    of the inner edge of its containing block.</li>
+  <li>The left (or right) outer edge of a floated element must be to the right (or left) 
+    of the right (left) outer edge of a leftfloating (or right-floating) element that 
+    occurs earlier in the document's source, unless the top of the latter element is 
+    below the bottom of the former.</li>
+  <li>The right outer edge of a left-floating element may not be to the right of the left 
+    outer edge of any right-floating element to its right. The left outer edge of a 
+    right-floating element may not be to the left of the right outer edge of any 
+    left-floating element to its left.</li>
+  <li>A floating element's top may not be higher than the inner top of its containing block.</li>
+  <li>A floating element's top may not be higher than the top of any earlier floating or 
+    block-level element.</li>
+  <li>A floating element's top may not be higher than the top of any line box with content 
+    that precedes the floating element.</li>
+  <li>A left (or right) floating element that has another floating element to its left 
+    (right) may not have its right (left) outer edge to the right (left) of its 
+    containing block's right (left) edge.</li>
+  <li>A floating element must be placed as high as possible.</li>
+  <li>A left-floating element must be put as far to the left as possible, and a right-floating 
+    element as far to the right as possible. A higher position is preferred to one that is 
+    farther to the right or left.</li>
+</ul>
+
+        <p>…</p>
+      </section>
+      <section id="ch1-10-positioning">
+        <h2>1.10 Positioning</h2>
+<p>When elements are positioned, a number of special rules come into play. These rules 
+govern not only the containing block of the element, but also how it is laid out within 
+that element.</p>
+<!--~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~-->
+<h4>Types of Positioning</h4>
+<!--~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~-->
+<p>There are five types of positioning:</p>
+<!--~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~-->
+<h5><i>Static</i></h5>
+<!--~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~-->
+<ul>
+  <li>The element's box is generated as normal. Block-level elements generate a rectangular 
+    box that is part of the document's flow, and inline-level boxes generate one or more 
+    line boxes that flow within their parent element.</li>
+</ul>
+<!--~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~-->
+<h5><i>Relative</i></h5>
+<!--~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~-->
+<ul>
+  <li>The element's box is offset by some distance. Its containing block can be considered 
+    to be the area that the element would occupy if it were not positioned. The element 
+    retains the shape it would have had were it not positioned, and the space that the 
+    element would otherwise have occupied in the normal flow is preserved.</li>
+</ul>
+<!--~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~-->
+<h5><i>Absolute</i></h5>
+<!--~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~-->
+<ul>
+  <li>The element's box is completely removed from the flow of the document and positioned 
+    with respect to its containing block, which may be another element in the document or 
+    the initial containing block (described in the next section). Whatever space the element 
+    might have occupied in the normal document flow is closed up, as though the element did 
+    not exist. The positioned element generates a block box, regardless of the type of box 
+    it would generate if it were in the normal flow.</li>
+</ul>
+<!--~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~-->
+<h5><i>Sticky</i></h5>
+<!--~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~-->
+<ul>
+  <li>The element's box stays in the normal flow until it reaches a sticky edge of the 
+    containing box, at which time it "sticks" there as if absolutely positioned. The space 
+    that the element would otherwise have occupied in the normal flow is preserved.</li>
+</ul>
+<!--~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~-->
+<h5><i>Fixed</i></h5>
+<!--~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~-->
+<ul>
+  <li>The element's box behaves as though set to absolute, but its containing block is 
+    the viewport itself.</li>
+</ul>
+<!--~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~-->
+<h4>The Containing Block</h4>
+<!--~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~-->
+<p>The containing block of a positioned element is determined as follows:</p>
+<ol type="1">
+  <li>The containing block of the <i>root element</i> (also called the <i>initial
+    containing block</i>) is established by the user agent. In HTML, the
+    root element is the html element, although some browsers may use
+    body.</li>
+  <li>For nonroot elements, if an element's position value is relative or static, its 
+    containing block is formed by the content edge of the nearest block-level, table-, 
+    cell-, or inline-block ancestor box. Despite this rule, relatively positioned
+    elements are still simply offset (not positioned with respect to the containing 
+    block described here) and statically positioned elements do not move from their 
+    place in the normal flow.</li>
+  <li>For nonroot elements that have a position value of absolute, the containing block 
+    is set to the nearest ancestor (of any kind) that has a position value other than 
+    static, a filter value other than none, or a transform value other than none. This 
+    happens as follows:
+    <ol type="a">
+      <li>If the ancestor is block-level, the containing block is that element's outer 
+        padding edge; in other words, it is the area bounded by the element's border.</li>
+      <li>If the ancestor is inline-level, the containing block is set to the content 
+        edge of the ancestor. In left-to-right languages, the top and left of the 
+        containing block are the top and left content edges of the first box in the 
+        ancestor, and the bottom and right edges are the bottom and right content edges 
+        of the last box. In rightto-left languages, the right edge of the containing 
+        block corresponds to the right content edge of the first box, and the left is 
+        taken from the last box. The top and bottom are the same.</li>
+      <li>If there are no ancestors as described in 3a and 3b, the absolutely positioned 
+        element's containing block is defined to be the initial containing block.</li>
+    </ol>
+  </li>
+</ol>
+
+        <p>…</p>
+      </section>
+      <section id="ch1-11-flexible-box-layout">
+        <h2>1.11 Flexible Box Layout</h2>
+<p>Flexible box layout (also known as <i>flexbox</i> or <i>flex layout</i>) is ideal for 
+almost any one-dimensional layout; that is, situations where a number of elements need 
+to be placed and distributed along a line. There are two kinds of flex elements: the 
+<i>flex container</i> and the <i>flex items</i> that are placed within the container.</p>
+
+<p>All the direct children of the flex container element are flex items.</p>
+
+<p>There are two kinds of flex containers: block flexboxes (display: flex) and inline 
+flexboxes (display: inline-flex). These are very much like block and inline-block boxes.</p>
+<p>Flex items are laid out in a single line by default, even if this causes the flex items 
+to overflow the flex container. This behavior can be changed using the flex-wrap property.</p>
+
+<p>Figure 1-4 shows the values (and their effects) of the justify content and align-items 
+properties.</p>
+<!--~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~-->
+<!--~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ 05. justify and align values ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~-->
+<p align="center">
+<img class="displayed"
+  src="/images/image005.png?raw=true"
+  title="Justify and align values"
+  alt="Justify and align values."
+  style="width:50%;" />
+</p>
+<p style="text-align:center;"><i>Figure 1-4. Justify and align values</i></p>
+
+<p>The process of calculating flex sizes is fairly complex. Here's a simplified version 
+of the algorithm:</p>
+<ol>
+  <li>Add together all the hypothetical outer main sizes of the flex items in a flex 
+    container. If the sum is smaller than the container size, the <i>flex factor</i> is 
+    to grow; otherwise, the flex factor is to shrink.</li>
+  <li>Any items that are inflexible are frozen in size. These are:
+    <ul>
+      <li>Any item with a flex factor of zero</li>
+      <li>Any item whose <i>hypothetical main size</i> is greater (if growing) or
+        smaller (if shrinking) than its <i>base size</i></li>
+      <li>Any item with a growth factor (if growing) or shrink factor (if shrinking) 
+      of zero.</li>
+    </ul>
+  </li>
+  <li>Calculate the <i>initial free space</i> by finding the difference between the outer 
+    sizes of all flex items and the size of the flex container.</li>
+  <li>Distribute the available free space to the flex items. The amount given to each flex 
+    item is initially determined by the ratio of its flex factor to the sum of all the items' 
+    flex factors. If an item will be grown past its maximum allowed size, or shrunk below its
+    minimum allowed size, set the size to be the allowed maximum (if growing) or minimum (if 
+    shrinking).</li>
+</ol>
+
+<p>Again, this is a simplified version of the actual flex sizing algorithm given in the 
+<a href="https://www.w3.org/TR/css-flexbox-1/#resolve-flexible-lengths">
+W3C documentation</a>. Consult section 9.7 of the CSS Flexible Box Layout Module Level 1 for
+full details if you want to know more.</p>
+
+        <p>…</p>
+      </section>
+      <section id="ch1-12-grid-layout">
+        <h2>1.12 Grid Layout</h2>
+<p>Grid layout is ideal for almost any two-dimensional layout. There are two kinds of 
+grid elements: the <i>grid container</i> and the <i>grid items</i> that are placed within 
+the container. All the direct children of the grid container element are grid items.</p>
+
+<p>There are two kinds of grid containers: block grids (display: grid) and inline grids 
+(display: inline-grid). These are very much like block and inline-block boxes.</p>
+
+<p>A grid is made up of the following components, as illustrated in Figure 1-5:</p>
+<ul>
+  <li>A <i>grid line</i> is a horizontal or vertical dividing line within the
+    grid container. These are placed as the author directs and create
+    grid <i>cells</i>, <i>areas</i>, and <i>tracks</i> by implication. Grid lines can
+    be labeled with <i>identifier tokens</i>; that's the basis of grid item
+    placement.</li>
+  <li>A <i>grid cell</i> is any space bounded by four grid lines, with no other
+    grid lines running through it, analogous to a table cell. This is
+    the smallest unit of area in grid layout. Grid cells cannot be
+    directly addressed with CSS grid properties; that is, no property
+    allows you to say a grid item should be associated with a given
+    cell. (But see the next point for more details.)</li>
+  <li>A <i>grid area</i> is any rectangular area bounded by four grid lines and
+    made up of one or more grid cells. An area can be as small as a
+    single cell or as large as all the cells in the grid. Grid areas are
+    directly addressable by CSS grid properties, which allow you to
+    define the areas and then associate grid items with them.</li>
+  <li>A <i>grid track</i> is a continuous run between two adjacent grid
+    lines---in other words, a <i>grid column</i> or a <i>grid row</i>. It goes
+    from one edge of the grid container to the other. The size of a grid
+    track is dependent on the placement of the grid lines that define
+    it. Grid columns and rows are broadly analogous to table columns and
+    rows. More generically, they can be referred to as <i>block axis</i> and
+    <i>inline axis</i> tracks, where (in Western languages) column tracks are
+    on the block axis and row tracks are on the inline axis.</li>
+</ul>
+<!--~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~-->
+<!--~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ 06. Grid layout components ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~-->
+<p align="center">
+<img class="displayed"
+  src="/images/image006.png?raw=true"
+  title="Grid layout components"
+  alt="Grid layout components."
+  style="width:50%;" />
+</p>
+<p style="text-align:center;"><i>Figure 1-5. Grid layout components</i></p>
+
+<p>The placement of grid lines can be quite complex, and is accomplished by defining 
+grid track sizes. Between each grid track, a grid line is placed. These lines can be 
+labeled with gridline names, or left unlabeled and later addressed using numbers.</p>
+
+<p>The formal syntax for defining grid track sizes is quite complicated, but the 
+components are relatively simple to list and explain:</p>
+
+<h5><b><mark><i>&lt;length&gt; &vert; &lt;percentage&gt;</i></mark></b></h5>
+<p>Any non-negative length or percentage value. Thus, 5em defines a 5-em gap between 
+grid lines, whereas 5% creates a gap between lines that is 5% of the total grid length in 
+the given direction (i.e., the horizontal length for grid rows, and the vertical length 
+for columns).</p>
+
+<h5><b><mark><i>&lt;flex&gt;</i></mark></b></h5>
+<p>A positive real number with the unit identifier fr (e.g., 2fr or 3.14fr) which defines 
+a <i>flex factor</i> for the grid track.</p>
+
+<h5><b><mark>min-content</mark></b></h5>
+<p>Sets the grid track's width (or height) to be as small as possible while still 
+containing all th  content within the grid track. For example, column tracks that 
+contain only text will become as narrow as the widest run of text that cannot be line-
+broken within the track.</p>
+
+<h5><b><mark>max-content</mark></b></h5>
+<p>Sets the grid track's width (or height) to be large enough to contain the largest 
+rendering of all the content within the grid track. For example, column tracks that 
+contain only text will become as wide as the longest run of text, <i>without</i> any 
+line-wrapping of the text.</p>
+
+<h5><b><mark>auto</mark></b></h5>
+<p>In most cases, auto is equivalent to the largest minimum size of the grid items 
+occupying the grid track; that is, once all the minimum sizes of the grid items in the 
+track have been determined, the track is made as wide as the widest of those minimums. 
+When auto is used as a maximum value (see minmax() later in this list), it is identical 
+to max-content.</p>
+
+<h5><b><mark>minmax(<i>&lt;min&gt;,&lt;max&gt;</i>)</mark></b></h5>
+<p>Sets a range of sizes outside which the grid track cannot grow or shrink. Either <i>&lt;min&gt;</i> 
+or <i>&lt;max&gt;</i> can be a <i>&lt;length&gt;</i> or <i>&lt;percentage&gt;</i> value, min-content, 
+or max-content. <i>&lt;max&gt;</i> can be a <i>&lt;flex&gt;</i> value, but <i>&lt;min&gt;</i> cannot. 
+If the minimum value computes to be larger than the maximum computed value, the maximum sizing is ignored 
+and the minimum size is used as a minimum.</p>
+
+<h5><b><mark>fit-content( &lbrack; <i>&lt;length&gt; &vert; &lt;percentage&gt;</i> &rbrack; )</mark></b></h5>
+<p>Equivalent to minmax(auto,max-content) with an exception: if the track's size is larger than the 
+auto value's computed value, that size can't go higher than the given value (a <i>&lt;length&gt;</i> 
+or <i>&lt;percentage&gt;</i>). This is intended to let authors declare a maximum track size while 
+still letting the track size be content-bound below that maximum.</p>
+
+<h5><b><mark>repeat( &lbrack; <i>&lt;integer&gt; &vert;</i> auto-fill <i>&vert;</i> auto-fit &rbrack;, 
+<i>&lt;track-list&gt;</i> )</mark></b></h5>
+<p>Allows authors to repeat a pattern of grid track sizes as many times as they like. The 
+<i>&lt;integer&gt;</i> value must be positive. auto-fill and auto-fit delegate the number
+of tracks to the user agent. <i>&lt;track-list&gt;</i> can be any valid combination of 
+track sizes.</p>
+
+<p>There are three kinds of track sizing. These are:</p>
+
+<h5><b><i><mark>Fixed</mark></i></b></h5>
+
+<p>Tracks are given a size in absolute lengths (such as px or em), or sized with %. 
+Percentage values count as fixed track sizes because they are always the same for a 
+given grid container size. The tracks' sizing does not depend on their contents.</p>
+
+<h5><b><i><mark>Flexible</mark></i></b></h5>
+<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Tracks are given a flex or fractional sizing via the fr 
+unit. Their sizing does not depend on their contents.</p>
+
+<h5><b><i><mark>Intrinsic</mark></i></b></h5>
+<p>The tracks' size is dependent on the things found within them; i.e., with min-content, 
+max-content, fit-content(), and auto. These tracks may always be the same size for a given 
+container size and set of content, but they are not regarded as fixed for layout purposes 
+because their contents directly affect their sizing.</p>
+
+<p>The process of actually determining the size of grid tracks, including what to do when 
+track sizes are overconstrained or could lead to circular dependencies, is too long to go 
+into here. In broad strokes, this is the process to find the track sizes:</p>
+<ol type="1"
+  <li>Initialize track sizes, including determining the minimum and maximum sizes for each 
+    track. Resolve fixed track sizes to absolute length values. Set intrinsically sized 
+    tracks' minimum size to zero and maximum size to unlimited. Flexible tracks are left 
+    flexible, with an initial minimum size of zero.</li>
+  <li>Determine the size of intrinsic (e.g., auto) tracks, resolving each to an absolute 
+    length. First find sizes based on the items within the track, and then gradually add 
+    space to encompass items that span multiple tracks.</li>
+  <li>Maximize tracks up to their growth limit (this is determined automatically).</li>
+  <li>Expand flexible (fr) tracks by adding space according to the ratio of each track's 
+    flex factor to the total of all flex factors in the grid track.</li>
+  <li>Expand any auto-sized tracks by dividing the remaining free space (if any) by the 
+    number of auto tracks and expanding them equally.</li>
+</ol>
+<p>The details of each step are quite lengthy, and can be found in section 11 of the 
+<a href="https://www.w3.org/TR/css-grid-1/#layout-algorithm" target="_blank" 
+rel="noreferrer noopener">CSS Grid Layout Module Level 1 documentation</a>.</p>
+
+        <p>…</p>
+      </section>
+      <section id="ch1-13-table-layout">
+        <h2>1.13 Table Layout</h2>
+<p>The layout of tables can get quite complicated, especially because CSS
+defines two different ways to calculate table and cell widths, as well
+as two ways to handle the borders of tables and elements internal to the
+table. Figure 1-6 illustrates the components of a table.</p>
+<!--~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~-->
+<!--~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ 07. Table layout components ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~-->
+<p align="center">
+<img class="displayed"
+  src="/images/image007.png?raw=true"
+  title="Table layout components"
+  alt="Table layout components."
+  style="width:50%;" />
+</p>
+<p style="text-align:center;"><i>Figure 1-6. Table layout components</i></p>
+<!--~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~-->
+<h4>Table Arrangement Rules</h4>
+<!--~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~-->
+<p>In general, a table is laid out according to the following principles:</p>
+<ul>
+  <li>Each row box encompasses a single row of grid cells. All of the row
+    boxes in a table fill the table from top to bottom in the order they
+    occur in the source document. Thus, the table contains as many grid
+    rows as there are row elements.</li>
+  <li>A row group's box encompasses the same grid cells as the row boxes
+    that it contains.</li>
+  <li>A column box encompasses one or more columns of grid cells. Column
+    boxes are placed next to each other in the order in which they
+    occur. The first column box is on the left for left-to-right
+    languages and on the right for rightto-left languages.</li>
+  <li>A column group's box encompasses the same grid cells as the column
+    boxes that it contains.</li>
+  <li>Although cells may span several rows or columns, CSS does not define how that 
+    happens. It is instead left to the document language to define spanning. Each spanned 
+    cell is a rectangular box one or more grid cells wide and high. The top row of this 
+    rectangle is in the row that is parent to the cell. The cell's rectangle must be as 
+    far to the left as possible in left-to-right languages, but it may not overlap any 
+    other cell box. It must also be to the right of all cells in the same row that appear 
+    earlier in the source document in a left-to-right language. In right-to-left languages, 
+    a spanned cell must be as far to the right as possible without overlapping other cells, 
+    and must be to the left of all cells in the same row that come after it in the document 
+    source.</li>
+  <li>A cell's box cannot extend beyond the last row box of a table or row group. If the 
+    table structure causes this condition, the cell must be shortened until it fits within 
+    the table or row group that encloses it.</li>
+</ul>
+<!--~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~-->
+<h4>Fixed Table Layout</h4>
+<!--~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~-->
+<p>The fixed-layout model is fast because its layout doesn't depend on the contents of 
+table cells; it's driven by the width values of the table, columns, and cells within the 
+first row of the table. The fixed-layout model uses the following steps:</p>
+<ol type="1">
+  <li>Any column element whose width property has a value other than auto sets the width 
+    for that column.</li>
+  <li>If a column has an auto width, but the cell in the first row of the table within 
+    that column has a width other than auto, that cell sets the width for that column. If 
+    the cell spans multiple columns, the width is divided equally among the columns.</li>
+  <li>Any columns that are still auto-sized are sized so that their widths are as equal 
+    as possible.</li>
+</ol>
+<p>At that point, the width of the table is set to be either the value of width for the 
+table or the sum of the column widths, whichever is greater. If the table turns out to be 
+wider than the column widths, the difference is divided by the number of columns and added 
+to each of them.</p>
+<!--~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~-->
+<h4>Automatic Table Layout</h4>
+<!--~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~-->
+<p>The automatic-layout model, although not as fast as the fixedlayout model, is likely 
+to be much more familiar to authors, because it's substantially the same model that HTML 
+tables have used for years. In most current user agents, use of this model will be 
+triggered by a table with a width of auto, regardless of the value of table-layout---
+although this is not assured.</p>
+
+<p>Here's how the model works:</p>
+<ol type="1">
+  <li>For each cell in a column, calculate both the minimum and maximum cell width.</li>
+  <li>Determine the minimum width required to display the content. In determining the 
+    minimum content width, the content can flow to any number of lines, but it may not 
+    stick out of the cell's box. If the cell's width value is larger than the minimum 
+    possible width, the minimum cell width is set to that value. If the cell's width 
+    value is auto, the minimum cell width is set to the minimum content width.</li>
+  <li>For the maximum width, determine the width required to display the content without 
+    any line-breaking, other than that forced by explicit line-breaking (e.g., due to the 
+    &lt;br&gt; element). That value is the maximum cell width.</li>
+  <li>For each column, calculate both the minimum and maximum column width:
+    <ol type-="a">
+      <li>The column's minimum width is determined by the largest minimum cell width of 
+        the cells within the column. If the column has been given an explicit width value 
+        that is larger than any of the minimum cell widths within the column, the minimum 
+        column width is set to the value of width.</li>
+      <li>For the maximum width, take the largest maximum cell width of the cells within 
+        the column. If the column has an explicit width value larger than any of the 
+        maximum cell widths within the column, the maximum column width is set to the 
+        value of width. These two behaviors recreate the traditional HTML table behavior 
+        of forcibly expanding any column to be as wide as its widest cell.</li>
+      <li>In cases where a cell spans more than one column, the sum of the minimum column 
+        widths must be equal to the minimum cell width for the spanning cell. Similarly, 
+        the sum of the maximum column widths must equal the spanning cell's maximum width. 
+        User agents should divide any changes in column widths equally among the spanned 
+        columns.</li>
+    </ol>
+  </li>
+</ol>
+<p>In addition, the user agent must take into account that when a column width has a 
+percentage value for its width, the percentage is calculated in relation to the width of 
+the table---even though that width is not known yet. The user agent must hang on to the 
+percentage value and use it in the next part of the algorithm. Once the user agent has 
+determined how wide or narrow each column can be, it can calculate the width of the table. 
+This happens as follows:</p>
+<ol type="1">
+  <li>If the computed width of the table is not auto, the computed table width is compared 
+    to the sum of all the column widths plus any borders and cell spacing. (Columns with 
+    percentage widths are likely calculated at this time.) The larger of the two values 
+    is the final width of the table. If the table's computed width is larger than the sum 
+    of the column widths, borders, and cell spacing, all columns are increased in width by 
+    an equal amount so they fill the computed width of the table.</li>
+  <li>If the computed width of the table is auto, the final width of the table is 
+    determined by summing up the column widths, borders, and cell spacing. This means the 
+    table will be only as wide as needed to display its content, just as with traditional 
+    HTML tables. Any columns with percentage widths use that percentage as a constraint,
+    but it is a constraint that a user agent does not have to satisfy.</li>
+</ol>
+<p>Once the last step is completed (and only then), the user agent can actually lay out 
+the table.</p>
+<!--~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~-->
+<h4>Collapsing Cell Borders</h4>
+<!--~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~-->
+<p>The collapsing cell model largely describes how HTML tables have always been laid out 
+when they have no cell spacing. The following rules govern this model:</p>
+<ul>
+  <li>Table elements cannot have any padding, although they can have margins. Thus, there 
+    is never separation between the border around the outside of the table and its 
+    outermost cells.</li>
+  <li>Borders can be applied to cells, rows, row groups, columns, and column groups. The 
+    table element itself can, as always, have a border.</li>
+  <li>There is never any separation between cell borders. In fact, borders collapse into 
+    each other where they adjoin so that only one of the collapsing borders is actually 
+    drawn. This is somewhat akin to margin collapsing, where the largest margin wins. 
+    When cell borders collapse, the "most interesting" border wins.</li>
+  <li>Once they are collapsed, the borders between cells are centered on the hypothetical 
+    grid lines between the cells.</li>
+</ul>
+<h5>Collapsing borders</h5>
+<p>When two or more borders are adjacent, they collapse into each other, as shown in 
+Figure 1-7. There are strict rules governing which borders will win and which will not:</p>
+<ol type="1">
+  <li>If one of the collapsing borders has a border-style of hidden, it takes precedence 
+    over all other collapsing borders: all borders at this location are hidden.</li>
+  <li>If one of the collapsing borders has a border-style of none, it takes the lowest 
+    priority. There will be no border drawn at this location only if all of the borders 
+    meeting at this location have a value of none. Note that none is the default value 
+    for border-style.</li>
+  <li>If at least one of the collapsing borders has a value other than either none or 
+    hidden, narrow borders lose out to wider ones. If two or more of the collapsing 
+    borders have the same width, the border style is taken in the following order, from 
+    most preferred to least: double, solid, dashed, dotted, ridge, outset, groove, inset. 
+    Thus, if two borders with the same width collapse and one is dashed while the other 
+    is outset, the border at that location will be dashed.</li>
+  <li>If collapsing borders have the same style and width but differ in color, the color 
+    used is taken from an element in the following list, from most preferred to least: 
+    cell, row, row group, column, column group, table. Thus, if the borders of a cell and 
+    a column---identical in every way except color---collapse, the cell's border color 
+    (and style and width) will be used. If the collapsing borders come from the same type 
+    of element---such as two row borders with the same style and width, but different 
+    colors---the one farthest to the left and top wins in left-to-right languages; in
+    right-to-left languages, the cell farthest to the right and top wins.</li>
+</ol>
+<!--~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~-->
+<!--~~~~~~~~~~~~~~~~~~~~~~~~~~~~ 08. Collapsing cell borders model ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~-->
+<p align="center">
+<img class="displayed"
+  src="/images/image008.png?raw=true"
+  title="Collapsing cell borders model"
+  alt="Collapsing cell borders model."
+  style="width:50%;" />
+</p>
+<p style="text-align:center;"><i>Figure 1-7. Collapsing cell borders model</i></p>
+<!--~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~-->
+<h3>Vertical Alignment Within Cells</h3>
+<!--~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~-->
+<p>The following describes the detailed process for aligning cell contents within a row:</p>
+<ol type="1">
+  <li>If any of the cells are baseline-aligned, the row's baseline is determined and the 
+    content of the baseline-aligned cells is placed.</li>
+  <li>Any top-aligned cell has its content placed. The row now has a provisional height, 
+    which is defined by the lowest cell bottom of the cells that have already had their 
+    content placed.</li>
+  <li>If any remaining cells are middle- or bottom-aligned, and the content height is 
+    taller than the provisional row height, the height of the row is increased by 
+    lowering the baseline in order to enclose the tallest of those cells.</li>
+  <li>All remaining cells have their content placed. In any cell with contents shorter 
+    than the row height, the cell's padding is increased in order to match the height of 
+    the row.</li>
+</ol>
+        <p>…</p>
+      </section>
+      <section id="endpoints">
+        <h2>Endpoints</h2>
+        <section id="endpoints--root">
+          <h3>Root</h3>
+          <p>…</p>
+        </section>
+        <section id="endpoints--cities-overview">
+          <h3>Cities Overview</h3>
+          <p>…</p>
+        </section>
+        <section id="endpoints--city-detail">
+          <h3>City Detail</h3>
+          <p>…</p>
+        </section>
+        <section id="endpoints--city-config">
+          <h3>City Config</h3>
+          <p>…</p>
+        </section>
+        <section id="endpoints--city-spots-overview">
+          <h3>City Spots Overview</h3>
+          <p>…</p>
+        </section>
+        <section id="endpoints--city-spot-detail">
+          <h3>City Spot Detail</h3>
+          <p>…</p>
+        </section>
+        <section id="endpoints--city-icons-overview">
+          <h3>City Icons Overview</h3>
+          <p>…</p>
+        </section>
+        <section id="endpoints--city-icon-detail">
+          <h3>City Icon Detail</h3>
+                <p>…</p>
+        </section>
+      </section>  <!-- id="endpoint" -->
+      <section id="links">
+        <h2>Links</h2>
+        <p>…</p>
+      </section>
+      <section id="expanders">
+        <h2>Expanders</h2>
+        <p>…</p>
+      </section>
+      <section id="filters">
+        <h2>Filters</h2>
+        <p>…</p>
+      </section>
+    </div>
+    <nav class="section-nav">
+      <ol>
+        <li><a href="#ch1-basic-concepts">Basic Concepts</a></li>
+        <li><a href="#ch1-1-adding-style">Adding Style to HTML</a></li>
+        <li><a href="#ch1-2-rul-structure">Rule Structure</a></li>
+        <li><a href="#ch1-3-at-rules">At-rules</a></li>
+        <li><a href="#ch1-4-comments">Comments</a></li>
+        <li><a href="#ch1-5-style-precedence">Style Precedence</a></li>
+        <li><a href="#ch1-6-element-class">Element Classification</a></li>
+        <li><a href="#ch1-7-element-display-roles">Element Display Roles</a></li>
+        <li><a href="#ch1-8-basic-visual-layout">Basic Visual Layout</a></li>
+        <li><a href="#ch1-9-floating">Floating</a></li>
+        <li><a href="#ch1-10-positioning">Positioning</a></li>
+        <li><a href="#ch1-11-flexible-box-layout">Flexible Box Layout</a></li>
+        <li><a href="#ch1-12-grid-layout">Grid Layout</a></li>
+        <li><a href="#ch1-13-table-layout">Table Layout</a></li>
+        <li><a href="#ch2-values">Values</a>
+          <ul>
+            <li class=""><a href="#ch2-1-keywords">Keywords</a></li>
+            <li class=""><a href="#ch2-2-color-values">Color Values</a></li>
+            <li class=""><a href="#ch2-3-number-values">Number Values</a></li>
+            <li class=""><a href="#ch2-4-perc-values">Percentage Values</a></li>
+            <li class=""><a href="#ch2-5-length-values">Length Values</a></li>
+            <li class=""><a href="#ch2-6-fraction-values">Fraction Values</a></li>
+            <li class=""><a href="#ch2-7-uris">URIs</a></li>
+            <li class=""><a href="#ch2-8-angles">Angles</a></li>
+            <li class=""><a href="#ch2-9-times">Times</a></li>
+            <li class=""><a href="#ch2-10-frequencies">Frequencies</a></li>
+            <li class=""><a href="#ch2-11-position">Position</a></li>
+            <li class=""><a href="#ch2-12-strings">Strings</a></li>
+            <li class=""><a href="#ch2-13-identifiers">Identifiers</a></li>
+            <li class=""><a href="#ch2-15-calc-values">Calculation Values</a></li>
+            <li class=""><a href="#ch2-16-var-values">Variable Values</a></li>
+          </ul>
+        </li>
+        <li><a href="#ch3-sel-queries">Selectors &amp; Queries</a>
+          <ul>
+            <li class=""><a href="#ch3-1-sel">Selectors</a></li>
+            <li class=""><a href="#ch3-2-struct-pseudo">Structural Pseudo-Classes</a></li>
+            <li class=""><a href="#ch3-3-neg-pseudo">The Negation Pseudo-Classes</a></li>
+            <li class=""><a href="#ch3-4-inter-pseudo">Interaction Pseudo-Classes</a></li>
+            <li class=""><a href="#ch3-5-pseudo">Pseudo-Elements</a></li>
+            <li class=""><a href="#ch3-6-media-queries">Media Queries</a></li>
+            <li class=""><a href="#ch3-7-feature-queries">Feature Queries</a></li>
+		  </ul>
+		</li>
+        <li><a href="#ch4-prop-ref">Property Reference</a>
+          <ul>
+            <li class=""><a href="#ch4-1-inh-anim">Inheritance &amp; Animation</a></li>
+            <li class=""><a href="#ch4-2-val-syntax">Value Syntax Conventions</a></li>
+            <li class=""><a href="#ch4-3-univ-vals">Universal Values</a></li>
+            <li class=""><a href="#ch4-4-prop">Properties</a></li>
+		  </ul>
+		</li>
+        <li><a href="#endpoints">Endpoints</a>
+          <ul>
+            <li class=""><a href="#endpoints--root">Root</a></li>
+            <li class=""><a href="#endpoints--cities-overview">Cities Overview</a></li>
+            <li class=""><a href="#endpoints--city-detail">City Detail</a></li>
+            <li class=""><a href="#endpoints--city-config">City Config</a></li>
+            <li class=""><a href="#endpoints--city-spots-overview">City Spots Overview</a></li>
+            <li class=""><a href="#endpoints--city-spot-detail">City Spot Detail</a></li>
+            <li class=""><a href="#endpoints--city-icons-overview">City Icons Overview</a></li>
+            <li class=""><a href="#endpoints--city-icon-detail">City Icon Detail</a></li>
+          </ul>
+        </li>
+        <li class=""><a href="#links">Links</a></li>
+        <li class=""><a href="#expanders">Expanders</a></li>
+        <li class=""><a href="#filters">Filters</a></li>
+      </ol>
+    </nav>
+  </main>
+  <script  src="./script.js"></script>
+
+</body>
+</html>
