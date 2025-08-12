@@ -1,25 +1,182 @@
 <!DOCTYPE html>
-<html lang="en" >
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en-US" xml:lang="en-US">
+<!--~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~-->
+<!--~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ index.html of CSS3-Reference ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~-->
+<!--~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ making css3-ref.bauska.org ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~-->
 <head>
   <meta charset="UTF-8">
-  <title>CSS3 Ref</title>
+  <link rel="shortcut icon" type="image/jpg" href="./images/favicon.ico">
+  <link rel="apple-touch-icon" sizes="57x57" href="./images/apple-icon-57x57.png">
+  <link rel="apple-touch-icon" sizes="60x60" href="./images/apple-icon-60x60.png">
+  <link rel="apple-touch-icon" sizes="72x72" href="./images/apple-icon-72x72.png">
+  <link rel="apple-touch-icon" sizes="76x76" href="./images/apple-icon-76x76.png">
+  <link rel="apple-touch-icon" sizes="114x114" href="./images/apple-icon-114x114.png">
+  <link rel="apple-touch-icon" sizes="120x120" href="./images/apple-icon-120x120.png">
+  <link rel="apple-touch-icon" sizes="144x144" href="./images/apple-icon-144x144.png">
+  <link rel="apple-touch-icon" sizes="152x152" href="./images/apple-icon-152x152.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="./images/apple-icon-180x180.png">
+  <link rel="icon" type="image/png" sizes="192x192"  href="./images/android-icon-192x192.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="./images/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="96x96" href="./images/favicon-96x96.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="./images/favicon-16x16.png">
+  <link rel="manifest" href="/manifest.json">
+  <meta name="msapplication-TileColor" content="#ffffff">
+  <meta name="msapplication-TileImage" content="./images/ms-icon-144x144.png">
+  <meta name="theme-color" content="#ffffff">
+  <link rel="shortcut icon" type="image/jpg" href="./images/favicon.ico">
+  <!-- viewport and seo -->
+  <meta name="title" content="CSS3 Reference Guide">
+  <meta name="description" content="CSS3 Reference Guide - during this course, 
+    you will learn: Simplified HTML5 tags, and how to use microdata; Play with audio 
+    and video tags; Use the Webcam; Draw and animate Web graphics; Discover HTML5 form 
+    features; Test basic APIs; Practice coding techniques.">
+  <meta name="keywords" content="CSS3,Reference,Guide,CSS3 Reference Guide,Intro,to,JS,
+    JavaScript,Silus Gaming World">
+  <meta name="robots" content="index, follow">
+  <meta name="language" content="English">
+  <meta name="author" content="Brian Bauska">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+  <title>CSS3 Reference</title>
+  <link rel="canonical" href="https://css3-ref.bauska.org">
   <link rel="stylesheet" href="./css/styles.css">
-
 </head>
 <body>
-  <main>
-    <div>
-      <h1>CSS3 Ref</h1>
-      <p><em>Want an explanation of how this works?<br />&rarr; 
-	    <a href="https://www.cellardoor.org/" 
-		  target="_top">https://www.cellardoor.org/</a></em>
-	  </p>
-      <section id="ch1-basic-concepts">
-        <h2>Chapter 1: Basic Concepts</h2>
-        <p>…</p>
-      </section>
-      <section id="ch1-1-adding-style">
-        <h2>1.1 Adding Style to HTML</h2>
+  <!--~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~-->
+  <button onclick="topFunction()" id="myBtn" title="Go to top">Top</button>
+  <!--~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~-->
+  <!--~~~~~~~~~~~~~~~~~~~~~~~~~~~~ script function: scrollFunction() ~~~~~~~~~~~~~~~~~~~~~~~~~~~-->
+  <script>
+    <!-- get the button -->
+    var mybutton = document.getElementById("myBtn");
+
+    <!-- <i>when the user scrolls down 10px from the top of the document, show the "Top" button</i> -->
+    window.onscroll = function() {scrollFunction()};
+
+    function scrollFunction() {
+      if (document.body.scrollTop > 10 || document.documentElement.scrollTop > 10) {
+        mybutton.style.display = "block";
+      } else {
+        mybutton.style.display = "none";
+      }
+    }
+
+  // <i>when the user clicks on the button, scroll to the table of contents near top of document.</i>
+  function topFunction() {
+    document.getElementById('table-of-contents').scrollIntoView();
+  }
+  </script>
+  <h1 style="text-align:center;">CSS3 Reference Guide</h1>
+  <h6 style="text-align:center;">(by Brian Bauska)</h6>
+  <!--
+  dl {
+    display: grid;
+    grid-gap: 4px 16px;
+    grid-template-columns: max-content;
+  }
+  dt {
+    font-weight: bold;
+  }
+  dd {
+    margin: 0;
+    grid-column-start: 2;
+  }
+  -->
+  <!--
+  ul.no-bullets {
+    list-style-type: none; /* Remove bullets */
+    padding: 0; /* Remove padding */
+    margin: 0; /* Remove margins */
+  }
+  -->
+<!--~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~-->
+<!--~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ 01. css reference guide logo ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~-->
+<p align="center">
+<img class="displayed"
+  src="/images/image000.png?raw=true"
+  title="CSS3 Reference Guide"
+  alt="CSS3 Reference Guide."
+  style="width:20%;" />
+</p>
+<!--~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~-->
+<!-- CSS3 Reference Guide  -->
+<!--~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~-->
+<h3 id="table-of-contents">Table of Contents</h3>
+<!--~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~-->
+<h2 id="preface">Preface</h2>
+<!--~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~-->
+<h2>Chapter 1: Basic Concepts</h2>
+<!--~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~-->
+<blockquote>
+<h3><a href="#ch1-1-1">1.1 Adding Styles to HTML</a></h3>
+<h3><a href="#ch1-2-1">1.2 Rule Structure</a></h3>
+<h3><a href="#ch1-3-1">1.3 At-rules</a></h3>
+<h3><a href="#ch1-4-1">1.4 Comments</a></h3>
+<h3><a href="#ch1-5-1">1.5 Style Precedence</a></h3>
+<h3><a href="#ch1-6-1">1.6 Element Classification</a></h3>
+<h3><a href="#ch1-7-1">1.7 Element Display Roles</a></h3>
+<h3><a href="#ch1-8-1">1.8 Basic Visual Layout</a></h3>
+<h3><a href="#ch1-9-1">1.9 Floating</a></h3>
+<h3><a href="#ch1-10-1">1.10 Positioning</a></h3>
+<h3><a href="#ch1-11-1">1.11 Flexible Box Layout</a></h3>
+<h3><a href="#ch1-12-1">1.12 Grid Layout</a></h3>
+<h3><a href="#ch1-13-1">1.13 Table Layout</a></h3>
+</blockquote>
+<!--~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~-->
+<h2>Chapter 2: Values</h2>
+<!--~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~-->
+<blockquote>
+<h3><a href="#ch2-1-1">2.1 Keywords</a></h3>
+<h3><a href="#ch2-2-1">2.2 Color Values</a></h3>
+<h3><a href="#ch2-3-1">2.3 Number Values</a></h3>
+<h3><a href="#ch2-4-1">2.4 Percentage Values</a></h3>
+<h3><a href="#ch2-5-1">2.5 Length Values</a></h3>
+<h3><a href="#ch2-6-1">2.6 Fraction Values</a></h3>
+<h3><a href="#ch2-7-1">2.7 URIs</a></h3>
+<h3><a href="#ch2-8-1">2.8 Angles</a></h3>
+<h3><a href="#ch2-9-1">2.9 Times</a></h3>
+<h3><a href="#ch2-10-1">2.10 Frequencies</a></h3>
+<h3><a href="#ch2-11-1">2.11 Position</a></h3>
+<h3><a href="#ch2-12-1">2.12 Strings</a></h3>
+<h3><a href="#ch2-13-1">2.13 Identifiers</a></h3>
+<h3><a href="#ch2-14-1">2.14 Attribute Values</a></h3>
+<h3><a href="#ch2-15-1">2.15 Calculation Values</a></h3>
+<h3><a href="#ch2-16-1">2.16 Variable Values</a></h3>
+</blockquote>
+<!--~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~-->
+<h2>Chapter 3: Selectors and Queries</h2>
+<!--~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~-->
+<blockquote>
+<h3><a href="#ch3-1-1">3.1 Selectors</a></h3>
+<h3><a href="#ch3-2-1">3.2 Structural Pseudo-Classes</a></h3>
+<h3><a href="#ch3-3-1">3.3 The Negation Pseudo-Classes</a></h3>
+<h3><a href="#ch3-4-1">3.4 Interaction Pseudo-Classes</a></h3>
+<h3><a href="#ch3-5-1">3.5 Pseudo-Elements</a></h3>
+<h3><a href="#ch3-6-1">3.6 Media Queries</a></h3>
+<h3><a href="#ch3-7-1">3.7 Feature Queries</a></h3>
+</blockquote>
+<!--~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~-->
+<h2>Chapter 4: Property Reference</h2>
+<!--~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~-->
+<blockquote>
+<h3><a href="#ch4-1-1">4.1 Inheritance and Animation</a></h3>
+<h3><a href="#ch4-2-1">4.2 Value Syntax Conventions</a></h3>
+<h3><a href="#ch4-3-1">4.3 Universal Values</a></h3>
+<h3><a href="#ch4-4-1">4.4 Properties</a></h3>
+</blockquote>
+<!-- page v -->
+<!--~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~-->
+<h2 style="text-align:right;">Preface</h2>
+<!--~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~-->
+<p>Cascading Style Sheets (CSS) is the World Wide Web Consortium (W3C) standard for the 
+visual presentation of web pages (although it can be used in other settings as well). 
+After a short introduction to the key concepts of CSS, this pocket reference provides an 
+alphabetical reference to all CSS3 selectors, followed by an alphabetical reference to 
+CSS3 properties.</p>
+<!-- page 1 -->
+<!--~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~-->
+<h2 id="ch1">1. CHAPTER 1 Basic Concepts</h2>
+<!--~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~-->
+<h3 id="ch1-1-1">1.1. Adding Styles to HTML</h3>
 <!--~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~-->
 <p>Styles can be applied to documents in three distinct ways, as discussed in the 
 following sections.</p>
@@ -182,10 +339,9 @@ stylesheet within that home directory.</p>
 Internet Explorer and Safari. Thus, this technique is usually limited to production 
 environments based on other user agents, and the occasional Easter egg for Firefox and 
 Opera users.</p>
-        <p>…</p>
-      </section>
-      <section id="ch1-2-rul-structure">
-        <h2>1.2 Rule Structure</h2>
+<!-- page 5 -->
+<!--~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~-->
+<h3 id="ch1-2-1">1.2. Rule Structure</h3>
 <!--~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~-->
 <p>A stylesheet consists of one or more <i>rules</i> that describe how page elements 
 should be presented. Every rule has two fundamental parts: the <i>selector</i> and the 
@@ -218,10 +374,10 @@ optional (though recommended).</p>
 its value by a colon (:). Property names in CSS are not case-sensitive. Legal values for 
 a property are defined by the property description. Chapter 4 provides details on 
 acceptable values for CSS properties.</p>
-        <p>…</p>
-      </section>
-      <section id="ch1-3-at-rules">
-        <h2>1.3 At-rules</h2>
+<!-- page 6 -->
+<!--~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~-->
+<h3 id="ch1-3-1">1.3. <b><mark>&#64; At-rules</mark></b></h3>
+<!--~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~-->
 <p>A CSS <i>at-rule</i> is a statement or block of rules that begins with a specific 
 identifier preceded by an @ sign. These are:</p>
 <ul>
@@ -271,11 +427,10 @@ These include:</p>
 <p>There are other proposed at-rules which are, as of early 2018, at various stages of 
 development. These include &#64;document, &#64;font-feature-values, &#64;page, and 
 &#64;viewport.</p>
-        <p>…</p>
-      </section>
-      <section id="ch1-4-comments">
-        <h2>1.4 Comments</h2>
-	<p>Including comments in CSS is simple. You open with /&ast; and end with &ast;/, like this:</p>
+<!--~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~-->
+<h3 id="ch1-4-1">1.4. Comments</h3>
+<!--~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~-->
+<p>Including comments in CSS is simple. You open with /&ast; and end with &ast;/, like this:</p>
 <pre>/&ast; This is a comment! &ast;/</pre>
 <p>Comments can be multiple lines long:</p>
 <pre>/&ast; This is a comment!
@@ -294,11 +449,9 @@ name or value:</p>
 stylesheets so as to hide the styles from browsers so old that they don't understand HTML 
 3.2. They do <i>not</i> act as CSS comments; that is, anything contained in an HTML 
 comment will be seen and interpreted by the CSS parser.</p>
-
-        <p>…</p>
-      </section>
-      <section id="ch1-5-style-precedence">
-        <h2>1.5 Style Precedence</h2>
+<!--~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~-->
+<h3 id="ch1-5-1">1.5. Style Precedence</h3>
+<!--~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~-->
 <p>A single HTML document can import and link to multiple external stylesheets, contain 
 one or more embedded stylesheets, and make use of inline styles. In the process, it is 
 quite possible that some rules will conflict with one another. Cascading Style Sheets 
@@ -378,11 +531,9 @@ Here's how the cascade works:</p>
 <p>Any presentational hints that come from non-CSS sources (e.g., the preference dialog 
 within a browser) are given the same weight as the user agent's default styles (see 
 step 2 above).</p>
-
-        <p>…</p>
-      </section>
-      <section id="ch1-6-element-class">
-        <h2>1.6 Element Classification</h2>
+<!--~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~-->
+<h3 id="ch1-6-1">1.6. Element Classification</h3>
+<!--~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~-->
 <p>Broadly speaking, CSS groups elements into two types: <i>nonreplaced</i> and <i>replaced</i>. 
 Although the types may seem rather abstract, there actually are some profound differences in how 
 the two types of elements are presented. These differences are explored in detail in Chapter 7 of 
@@ -412,11 +563,9 @@ Only by replacing the element's lack of content with content found through other
 have any presentation at all. Another example is the input element, which may be replaced 
 with a radio button, checkbox, or text input box, depending on its type. Replaced 
 elements also generate boxes in their display.</p>
-
-        <p>…</p>
-      </section>
-      <section id="ch1-7-element-display-roles">
-        <h2>1.7 Element Display Roles</h2>
+<!--~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~-->
+<h3 id="ch1-7-1">1.7. Element Display Roles</h3>
+<!--~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~-->
 <p>In addition to being replaced or not, there are two basic types of element display roles 
 in CSS: <i>block-level</i> and <i>inline-level</i>. All CSS display values fall into one 
 of these two categories. It can be important to know which general role a box falls into, 
@@ -457,11 +606,9 @@ restriction on how display roles can be nested within each other.</p>
 and ruby. As of this writing, it was not explicitly defined that the various Ruby-related 
 values (e.g., ruby-text) also generate inline boxes, but this seems the most likely 
 outcome.</p>
-
-        <p>…</p>
-      </section>
-      <section id="ch1-8-basic-visual-layout">
-        <h2>1.8 Basic Visual Layout</h2>
+<!--~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~-->
+<h3 id="ch1-8-1">1.8. Basic Visual Layout</h3>
+<!--~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~-->
 <p>CSS defines algorithms for laying out any element in a document. These algorithms form 
 the underpinnings of visual presentation in CSS. There are two primary kinds of layout, 
 each with very different behaviors: <i>block-level</i> and <i>inline-level</i> layout.</p>
@@ -541,9 +688,7 @@ determined by taking the following factors into account:</p>
 <!--~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~-->
 <ul style="list-style: none;">
   <li>Any string of characters not contained within an inline element. Thus, in the markup:<br>
-
-      <b>&lt;p&gt;</b>I&apos;m <b>&lt;em&gt;</b>so<b>&lt;/em&gt;</b> happy!<b>&lt;/p&gt;</b><br>
-
+    <b>&lt;p&gt;</b>I&apos;m <b>&lt;em&gt;</b>so<b>&lt;/em&gt;</b> happy!<b>&lt;/p&gt;</b><br>
     the sequences "I'm " and " happy!" are anonymous text. Note that the spaces are part 
     of the anonymous text, as a space is a character like any other.</li>
 </ul>
@@ -604,11 +749,9 @@ determined by taking the following factors into account:</p>
   style="width:50%;" />
 </p>
 <p style="text-align:center;"><i>Figure 1-3. Inline layout details</i></p>
-
-        <p>…</p>
-      </section>
-      <section id="ch1-9-floating">
-        <h2>1.9 Floating</h2>
+<!--~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~-->
+<h3 id="ch1-9-1">1.9. Floating</h3>
+<!--~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~-->
 <p>Floating allows an element to be placed to the left or right of its containing block 
 (which is the nearest block-level ancestor element), with following content flowing 
 around the element. Any floated element automatically generates a block box, regardless 
@@ -638,11 +781,9 @@ according to the following rules:</p>
     element as far to the right as possible. A higher position is preferred to one that is 
     farther to the right or left.</li>
 </ul>
-
-        <p>…</p>
-      </section>
-      <section id="ch1-10-positioning">
-        <h2>1.10 Positioning</h2>
+<!--~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~-->
+<h3 id="ch1-10-1">1.10. Positioning</h3>
+<!--~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~-->
 <p>When elements are positioned, a number of special rules come into play. These rules 
 govern not only the containing block of the element, but also how it is laid out within 
 that element.</p>
@@ -727,23 +868,18 @@ that element.</p>
     </ol>
   </li>
 </ol>
-
-        <p>…</p>
-      </section>
-      <section id="ch1-11-flexible-box-layout">
-        <h2>1.11 Flexible Box Layout</h2>
+<!--~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~-->
+<h3 id="ch1-11-1">1.11. Flexible Box Layout</h3>
+<!--~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~-->
 <p>Flexible box layout (also known as <i>flexbox</i> or <i>flex layout</i>) is ideal for 
 almost any one-dimensional layout; that is, situations where a number of elements need 
 to be placed and distributed along a line. There are two kinds of flex elements: the 
 <i>flex container</i> and the <i>flex items</i> that are placed within the container.</p>
-
 <p>All the direct children of the flex container element are flex items.</p>
-
 <p>There are two kinds of flex containers: block flexboxes (display: flex) and inline 
 flexboxes (display: inline-flex). These are very much like block and inline-block boxes.</p>
 <p>Flex items are laid out in a single line by default, even if this causes the flex items 
 to overflow the flex container. This behavior can be changed using the flex-wrap property.</p>
-
 <p>Figure 1-4 shows the values (and their effects) of the justify content and align-items 
 properties.</p>
 <!--~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~-->
@@ -785,18 +921,14 @@ of the algorithm:</p>
 <a href="https://www.w3.org/TR/css-flexbox-1/#resolve-flexible-lengths">
 W3C documentation</a>. Consult section 9.7 of the CSS Flexible Box Layout Module Level 1 for
 full details if you want to know more.</p>
-
-        <p>…</p>
-      </section>
-      <section id="ch1-12-grid-layout">
-        <h2>1.12 Grid Layout</h2>
+<!--~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~-->
+<h3 id="ch1-12-1">1.12. Grid Layout</h3>
+<!--~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~-->
 <p>Grid layout is ideal for almost any two-dimensional layout. There are two kinds of 
 grid elements: the <i>grid container</i> and the <i>grid items</i> that are placed within 
 the container. All the direct children of the grid container element are grid items.</p>
-
 <p>There are two kinds of grid containers: block grids (display: grid) and inline grids 
 (display: inline-grid). These are very much like block and inline-block boxes.</p>
-
 <p>A grid is made up of the following components, as illustrated in Figure 1-5:</p>
 <ul>
   <li>A <i>grid line</i> is a horizontal or vertical dividing line within the
@@ -834,11 +966,9 @@ the container. All the direct children of the grid container element are grid it
   style="width:50%;" />
 </p>
 <p style="text-align:center;"><i>Figure 1-5. Grid layout components</i></p>
-
 <p>The placement of grid lines can be quite complex, and is accomplished by defining 
 grid track sizes. Between each grid track, a grid line is placed. These lines can be 
 labeled with gridline names, or left unlabeled and later addressed using numbers.</p>
-
 <p>The formal syntax for defining grid track sizes is quite complicated, but the 
 components are relatively simple to list and explain:</p>
 
@@ -886,11 +1016,11 @@ still letting the track size be content-bound below that maximum.</p>
 
 <h5><b><mark>repeat( &lbrack; <i>&lt;integer&gt; &vert;</i> auto-fill <i>&vert;</i> auto-fit &rbrack;, 
 <i>&lt;track-list&gt;</i> )</mark></b></h5>
+
 <p>Allows authors to repeat a pattern of grid track sizes as many times as they like. The 
 <i>&lt;integer&gt;</i> value must be positive. auto-fill and auto-fit delegate the number
 of tracks to the user agent. <i>&lt;track-list&gt;</i> can be any valid combination of 
 track sizes.</p>
-
 <p>There are three kinds of track sizing. These are:</p>
 
 <h5><b><i><mark>Fixed</mark></i></b></h5>
@@ -929,10 +1059,9 @@ into here. In broad strokes, this is the process to find the track sizes:</p>
 <p>The details of each step are quite lengthy, and can be found in section 11 of the 
 <a href="https://www.w3.org/TR/css-grid-1/#layout-algorithm" target="_blank" 
 rel="noreferrer noopener">CSS Grid Layout Module Level 1 documentation</a>.</p>
-
-      </section>
-      <section id="ch1-13-table-layout">
-        <h2>1.13 Table Layout</h2>
+<!--~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~-->
+<h3 id="ch1-13-1">1.13. Table Layout</h3>
+<!--~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~-->
 <p>The layout of tables can get quite complicated, especially because CSS
 defines two different ways to calculate table and cell widths, as well
 as two ways to handle the borders of tables and elements internal to the
@@ -952,18 +1081,15 @@ table. Figure 1-6 illustrates the components of a table.</p>
 <!--~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~-->
 <p>In general, a table is laid out according to the following principles:</p>
 <ul>
-  <li>Each row box encompasses a single row of grid cells. All of the row
-    boxes in a table fill the table from top to bottom in the order they
-    occur in the source document. Thus, the table contains as many grid
-    rows as there are row elements.</li>
-  <li>A row group's box encompasses the same grid cells as the row boxes
-    that it contains.</li>
-  <li>A column box encompasses one or more columns of grid cells. Column
-    boxes are placed next to each other in the order in which they
-    occur. The first column box is on the left for left-to-right
-    languages and on the right for rightto-left languages.</li>
-  <li>A column group's box encompasses the same grid cells as the column
-    boxes that it contains.</li>
+  <li>Each row box encompasses a single row of grid cells. All of the row boxes in a 
+    table fill the table from top to bottom in the order they occur in the source 
+	document. Thus, the table contains as many grid rows as there are row elements.</li>
+  <li>A row group's box encompasses the same grid cells as the row boxes that it contains.</li>
+  <li>A column box encompasses one or more columns of grid cells. Column boxes are placed 
+    next to each other in the order in which they occur. The first column box is on the 
+	left for left-to-right languages and on the right for rightto-left languages.</li>
+  <li>A column group's box encompasses the same grid cells as the column boxes that it 
+    contains.</li>
   <li>Although cells may span several rows or columns, CSS does not define how that 
     happens. It is instead left to the document language to define spanning. Each spanned 
     cell is a rectangular box one or more grid cells wide and high. The top row of this 
@@ -1127,15 +1253,15 @@ Figure 1-7. There are strict rules governing which borders will win and which wi
     than the row height, the cell's padding is increased in order to match the height of 
     the row.</li>
 </ol>
-      </section>
-	  </section>  <!-- id="ch1-basic-concepts" -->
-      <section id="ch2-values">
-        <h2>Values</h2>
+<!--~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~-->
+<h2 id="ch2">2. CHAPTER 2 Values</h2>
+<!--~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~-->
 <p>There are a variety of value types in CSS, most of which use units. Combining basic 
 value types (such as numbers) with units (such as pixels) makes it possible to do any 
 number of interesting things with CSS.</p>
-        <section id="ch2-1-keywords">
-          <h2>Keywords</h2>
+<!--~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~-->
+<h3 id="ch2-1-1">2.1. Keywords</h3>
+<!--~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~-->
 <p>Keywords are defined on a per-property basis and have a meaning specific only to a 
 given property. For example, normal has totally unique meanings for the properties font-
 variant and letter-spacing. Keywords, like property names, are not case-sensitive.</p>
@@ -1167,9 +1293,9 @@ unset has the same effect as initial.</p>
 <p>If you have a situation where you want to set all of the properties on an element to 
 their default values, thus breaking any chains of inheritance, see the all property in 
 Chapter 4.</p>
-        </section>
-        <section id="ch2-2-color">
-          <h2>Color Values</h2>
+<!--~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~-->
+<h3 id="ch2-2-1">2.2. Color Values</h3>
+<!--~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~-->
 <p>Color values can be expressed in a variety of ways:</p>
 <!--~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~-->
 <h4><i><span class="newFont">#RRGGBB</span></i></h4>
@@ -1262,30 +1388,27 @@ quite useful when (un)setting a border's color via DOM scripting.</p>
 <!--~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~-->
 <p>A special keyword that is (just barely) a shorthand for rgba(0,0,0,0), which is the 
 computed value any time transparent is used.</p>
-
-        </section>
-        <section id="ch2-3-number">
-          <h2>Number Values</h2>
+<!--~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~-->
+<h3 id="ch2-3-1">2.3. Number Values</h3>
+<!--~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~-->
 <p>A number value is expressed as a positive or negative number (when permitted). Numbers 
 can be either real (represented as <i>&lt;number&gt;</i>) or integers (<i>&lt;integer&gt;</i>). 
 They may also restrict the range of acceptable values, as with color values that accept only 
 integers in the range 0--255. A more common range restriction is to limit a number to be 
 non-negative. These are sometimes represented as <i>&lt;non-negative number&gt;</i> or 
 <i>&lt;non-negative integer&gt;</i>.</p>
-
-        </section>
-        <section id="ch2-4-perc">
-          <h2>Percentage Values</h2>
+<!--~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~-->
+<h3 id="ch2-4-1">2.4. Percentage Values</h3>
+<!--~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~-->
 <p>A percentage value is expressed as a <i>&lt;number&gt;</i> followed immediately by a percent 
 sign (%). There should never be any space between the number and the percent sign. A percentage 
 value will always be computed relative to something else. For example, declaring font-size: 120% 
 for an element sets its font size to 120% of the computed font-size of its parent element. 
 Fractional values, such as 543.21%, are valid. Some properties may restrict percentage values to 
 be non-negative.</p>
-
-        </section>
-        <section id="ch2-5-length">
-          <h2>Length Values</h2>
+<!--~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~-->
+<h3 id="ch2-5-1">2.5. Length Values</h3>
+<!--~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~-->
 <p>A length value is expressed as a positive or negative number (when permitted), followed 
 immediately by a unit identifier. There should never be any space between the number and the 
 unit identifier. A length value of 0 (zero) does not require a unit identifier.</p>
@@ -1387,55 +1510,50 @@ given a viewport that is 937 pixels wide by 650 pixels tall, 1vmin is equal to 6
 
 <p>This unit is 1/100 of the viewport's width or height, whichever is <i>greater</i>. Thus, 
 given a viewport that is 937 pixels wide by 650 pixels tall, 1vmax is equal to 9.37px.</p>
-
-          <p>…</p>
-        </section>
-        <section id="ch2-6-fraction">
-          <h2>Fraction Values</h2>
+<!--~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~-->
+<h3 id="ch2-6-1">2.6. Fraction Values</h3>
+<!--~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~-->
 <p>A <i>fraction value</i> is a <i>&lt;number&gt;</i> followed by the label fr. Thus, one
 fraction unit is 1fr, four fraction units are 4fr, and so on. This is a concept introduced 
 by Grid Layout, and is used to divide up fractions of the unconstrained space in a layout. 
 Note that fr is <i>not</i> a <i>&lt;length&gt;</i> unit, and thus cannot be used in places 
 where length values are permitted (e.g., calc() expressions, see "Calculation Values" on
 page 45).</p>
-        </section>
-        <section id="ch2-7-uris">
-          <h2>URIs</h2>
+<!--~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~-->
+<h3 id="ch2-7-1">2.7. URIs</h3>
+<!--~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~-->
 <p>A URI value (<i>&lt;uri&gt;</i>) is a reference to a file such as a graphic or another 
 stylesheet. CSS defines a URI as relative to the stylesheet that contains it. URI stands 
 for Uniform Resource Identifier, which is the more recent name for URLs. (Technically, 
 URLs are a subset of URIs.) In CSS, which was first defined when URIs were still called 
 URLs, this means that references to URIs will often appear in the form url(<i>&lt;uri&gt;</i>). Fun!</p>
-
-        </section>
-        <section id="ch2-8-angles">
-          <h2>Angles</h2>
+<!--~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~-->
+<h3 id="ch2-8-1">2.8. Angles</h3>
+<!--~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~-->
 <p>The format of an <i>&lt;angle&gt;</i> is expressed as a <i>&lt;number&gt;</i> followed 
 immediately by an angle unit. There are four types of angle units: degrees (deg), grads (grad), 
 radians (rad), and turns (turn). For example, a right angle could be declared as 90deg, 100grad, 
 1.571rad, or 0.25turn. In each case, the values are translated into degrees in the range 0 
 through 360. This is also true of negative values: −90deg is equivalent to 270deg.</p>
-
-        </section>
-        <section id="ch2-9-times">
-          <h2></h2>
+<!--~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~-->
+<h3 id="ch2-9-1">2.9. Times</h3>
+<!--~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~-->
 <p>A time value (<i>&lt;time&gt;</i>) is expressed as a <i>&lt;number&gt;</i> followed
 immediately by a time unit. There are two types of time units: seconds (s) and milliseconds 
 (ms). Time values appear in aural styles, which are not widely supported, and in the much 
 better supported transitions and animations.</p>
-        </section>
-        <section id="ch2-10-frequencies">
-          <h2>Frequencies</h2>
+<!--~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~-->
+<h3 id="ch2-10-1">2.10. Frequencies</h3>
+<!--~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~-->
 <p>A frequency value (<i>&lt;frequency&gt;</i>) is expressed as a non-negative 
 <i>&lt;number&gt;</i> followed immediately by a frequency unit. There are two types of 
 frequency units: hertz (Hz) and kilohertz (kHz).</p>
 
 <p>The unit identifiers are case-insensitive, so 6kHz and 6khz are equivalent. As of this 
 writing, frequency values are only used with aural styles, which are not well supported.</p>
-
-        </section>
-        <section id="ch2-11-position">
-          <h2>Position</h2>
+<!--~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~-->
+<h3 id="ch2-11-1">2.11. Position</h3>
+<!--~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~-->
 <p>A position value (<i>&lt;position&gt;</i>) is how you specify the placement of an
 origin image in backgrounds, object fitting, masking placement, and a few other 
 circumstances. Its syntactical structure is rather complicated:</p>
@@ -1454,10 +1572,9 @@ circumstances. Its syntactical structure is rather complicated:</p>
 complex patterns that this value type has to allow, such as center, bottom right, 50% 
 center, left 77px, and so on. The notation used here is described in "Value Syntax 
 Conventions" on page 73.</p>
-
-        </section>
-        <section id="ch2-12-strings">
-          <h2>Strings</h2>
+<!--~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~-->
+<h3 id="ch2-12-1">2.12. Strings</h3>
+<!--~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~-->
 <p>A string (<i>&lt;string&gt;</i>) is a series of characters enclosed by either single 
 or double quotes. If a string needs to include the same quote that encloses it, it must 
 be escaped. For example,</p>
@@ -1468,10 +1585,9 @@ is the Unicode codepoint for the line feed character. Any Unicode character can 
 represented using an escaped codepoint reference; thus, a left curly double quotation 
 mark can be represented with \201C. If a string does contain a line feed for legibility 
 reasons, it must be escaped and will be removed when processing the string.</p>
-
-        </section>
-        <section id="ch2-13-identifiers">
-          <h2>Identifiers</h2>
+<!--~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~-->
+<h3 id="ch2-13-1">2.13. Identifiers</h3>
+<!--~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~-->
 <p>There are some properties that accept an <i>identifier value</i>, which is a user-
 defined label of some kind; the most common examples are grid lines and areas in grid 
 layout and keyframe names in animations. Identifiers are represented in the value syntax 
@@ -1479,31 +1595,27 @@ as <i>&lt;identifier&gt;</i>. Identifiers are words and are case-sensitive; thus
 and MyID are, as far as CSS is concerned, completely distinct and unrelated to each 
 other. In cases where a property accepts both an identifier and one or more keywords,
 the author should take care to never define an identifier identical to a valid keyword.</p>
-
-        </section>
-		<section id="ch2-14-attr">
-          <h2>Attribute Values</h2>
+<!--~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~-->
+<h3 id="ch2-14-1">2.14. Attribute Values</h3>
+<!--~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~-->
 <p>In a few CSS properties, it's possible to pull in the value of an HTML attribute 
 defined for the element being styled. This is done with the attr() value. As of early 
 2018, this is almost exclusively done with generated content, using the content 
 property.</p>
-
 <p>For example, <b>h2::before {content: &quot;&lbrack;&quot; attr(ID) &quot;&rbrack; &quot;;}</b> 
 will insert an opening square bracket, the ID of the h2 element, and then a closing square 
 bracket and trailing space. Any attribute, including HTML <b>data-&ast;</b> attributes, can be 
 addressed in this manner.</p>
-
-        <section id="ch2-15-calc">
-          <h2>Calculation Values</h2>
+<!--~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~-->
+<h3 id="ch2-15-1">2.15. Calculation Values</h3>
+<!--~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~-->
 <p>Calculation values take the form calc(), with an equation inside the
 parentheses. calc() can be used wherever <i>&lt;length&gt;</i>, <i>&lt;frequency&gt;</i>,
 <i>&lt;angle&gt;</i>, <i>&lt;time&gt;</i>, <i>&lt;percentage&gt;</i>, <i>&lt;number&gt;</i>, or
 <i>&lt;integer&gt;</i> values are allowed. You can also use all these units.</p>
-
 <p><b>Identifiers</b></p>
 <p>types within a calc() value, though there are some limitations to keep
 in mind.</p>
-
 <p>Inside the parentheses, you can construct simple mathematical
 expressions. The permitted operators are + (addition), -- (subtraction),
 &ast; (multiplcation), and / (division), as well as parentheses. These
@@ -1511,7 +1623,6 @@ follow the traditional PEMDAS (parentheses, exponents, multiplication,
 division, addition, subtraction) precedence order---although in this
 case it's really just PMDAS, since as of early 2018, exponents are not
 permitted in calc().</p>
-
 <p>The basic limitation is that calc() does simple type-checking to make sure that units 
 are compatible:</p>
 <ol>
@@ -1528,15 +1639,13 @@ are compatible:</p>
 <p>There's one more notable limitation: whitespace is <i>required</i> to either
 side of the + and - operators, while it is not for &ast; and /. This avoids
 ambiguity with respect to numeric values, which can be negative.</p>
-
-        </section>
-        <section id="ch2-16-var">
-<p>As this book was being finished in early 2018, a new capability was
-being added to CSS. The technical term for this is <i>custom properties</i>,
-even though what these really do is create (sort of) variables in your
-CSS. They do not, contrary to their name, create special CSS properties,
-in the sense of properties like color or font.</p>
-
+<!--~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~-->
+<h3 id="ch2-16-1">2.16. Variable Values</h3>
+<!--~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~-->
+<p>As this book was being finished in early 2018, a new capability was being added to 
+CSS. The technical term for this is <i>custom properties</i>, even though what these 
+really do is create (sort of) variables in your CSS. They do not, contrary to their name, 
+create special CSS properties, in the sense of properties like color or font.</p>
 <p>Custom properties are defined by giving a custom identifier a value, like this:</p>
 
 <pre>
@@ -1548,7 +1657,6 @@ in the sense of properties like color or font.</p>
 <p>The important thing is that any custom identifier of this type begins with <i>two</i> 
 hyphens (&dash;-). Anything else, and the identifier will not be recognized, meaning the 
 variable definition will fail.</p>
-
 <p>The defined value can then be invoked later on using a var() value type, like this:</p>
 
 <pre><b>h1</b> {<b>color</b>: var(&dash;-mainColor);}</pre>
@@ -1556,13 +1664,11 @@ variable definition will fail.</p>
 <p>Note that these names are case-sensitive, so &dash;-maincolor and
 &dash;-MainColor are completely separate identifiers. Custom properties are
 scoped to the element to which they are applied.</p>
-
-        </section>
-	  </section>  <!-- id="ch2-values" -->
-      <section id="ch3-selectors-queries">
-        <h2>Selectors &amp; Queries</h2>
-        <section id="ch3-1-sel">
-          <h2>Selectors</h2>
+<!--~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~-->
+<h2 id="ch3">3. CHAPTER 3 Selectors and Queries</h2>
+<!--~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~-->
+<h3 id="ch3-1-1">3.1. Selectors</h3>
+<!--~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~-->
 <!-- Universal Selector  -->
 <!--~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~-->
 <table style="width:500px;">
@@ -1718,9 +1824,9 @@ h1 + &ast; {margin-top: 0;}
       <td>element1 &#126; element2</td>
     </tr>
       <td><b>Description</b></td>
-      <td>Matches an element that is a sibling of another element which it follows in the document 
-      tree. Any text or other elements between the two elements are ignored; only the elements and 
-      their positions in the document tree are considered.</td>
+      <td>Matches an element that is a sibling of another element which it follows in the 
+	    document tree. Any text or other elements between the two elements are ignored; 
+		only the elements and their positions in the document tree are considered.</td>
     </tr>
     <tr>
       <td><b>Examples</b></td>
@@ -1748,11 +1854,11 @@ h1 + &ast; {margin-top: 0;}
       <td>element1.classname<br>element1.classname1.classname2</td>
     </tr>
       <td><b>Description</b></td>
-      <td>In languages that permit it, such as HTML, SVG, and MathML, a class 
-      selector using "dot notation" matches elements that have a class attribute containing a 
-      specific value or values. The name of the class value must immediately follow the dot. 
-      Multiple class values can be chained together. If no element name precedes the dot, the 
-      selector matches all elements bearing that class value or values.</td>
+      <td>In languages that permit it, such as HTML, SVG, and MathML, a class selector 
+	    using "dot notation" matches elements that have a class attribute containing a 
+      specific value or values. The name of the class value must immediately follow the 
+	  dot. Multiple class values can be chained together. If no element name precedes 
+	  the dot, the selector matches all elements bearing that class value or values.</td>
     </tr>
     <tr>
       <td><b>Examples</b></td>
@@ -1782,10 +1888,10 @@ a.external {font-style: italic;}
       <td>element1#idname</td>
     </tr>
       <td><b>Description</b></td>
-      <td>In languages that permit it, such as HTML or SVG, an ID selector selects elements 
-      that have an id attribute containing a specific value. The name of the ID value must 
-      immediately follow the octothorpe (#). If no element name precedes the octothorpe, the 
-      selector matches all elements containing that ID value.</td>
+      <td>In languages that permit it, such as HTML or SVG, an ID selector selects 
+	    elements that have an id attribute containing a specific value. The name of the 
+		ID value must immediately follow the octothorpe (#). If no element name precedes 
+		the octothorpe, the selector matches all elements containing that ID value.</td>
     </tr>
     <tr>
       <td><b>Examples</b></td>
@@ -1816,7 +1922,8 @@ body#home {background: silver;}
       <td>element1&lbrack;attr&rbrack;</td>
     </tr>
       <td><b>Description</b></td>
-      <td>Matches elements based on the presence of an attribute, regardless of the attribute's value.</td>
+      <td>Matches elements based on the presence of an attribute, regardless of the 
+	    attribute's value.</td>
     </tr>
     <tr>
       <td><b>Examples</b></td>
@@ -1990,12 +2097,12 @@ div&lbrack;class&ast;=&quot;port&quot;&rbrack; {border: 1px solid red;}
     </tr>
     <tr>
       <td><b>Description</b></td>
-      <td>Matches elements with a lang attribute whose value is one of a hyphen-separated list 
-        of values, starting with the value provided in the selector. In an HTML document, the 
-        language of an element is determined by its lang attribute. If an element does not have 
-        one, its language is determined by the lang attribute of its nearest ancestor that does 
-        have one, or, lacking that, by the Content-Language HTTP header response field (or the 
-        respective meta http-equiv) for the document.</td>
+      <td>Matches elements with a lang attribute whose value is one of a hyphen-separated 
+	    list of values, starting with the value provided in the selector. In an HTML 
+		document, the language of an element is determined by its lang attribute. If an 
+		element does not have one, its language is determined by the lang attribute of 
+		its nearest ancestor that does have one, or, lacking that, by the Content-Language 
+		HTTP header response field (or the respective meta http-equiv) for the document.</td>
     </tr>
     <tr>
       <td><b>Examples</b></td>
@@ -2007,15 +2114,14 @@ html&lbrack;lang&vert;=&quot;tr&quot;&rbrack; {color: red;}
     </tr>
   </tbody>
 </table>
-
-        </section>
-        <section id="ch3-2-struct-pseudo">
-          <h2>Structural Pseudo-Classes</h2>
-<p>Strictly speaking, all pseudo-classes (like all selectors) are structural: they 
-are, after all, dependent on document structure in some fashion. What sets the 
-pseudo-classes listed here apart is that they are intrinsically about patterns found 
-in the structure of the document: for example, selecting every other paragraph or 
-elements that are the last children of their parent element.</p>
+<!--~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~-->
+<h3 id="ch3-2-1">3.2. Structural Pseudo-Classes</h3>
+<!--~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~-->
+<p>Strictly speaking, all pseudo-classes (like all selectors) are structural: they are, 
+after all, dependent on document structure in some fashion. What sets the pseudo-classes 
+listed here apart is that they are intrinsically about patterns found in the structure of 
+the document: for example, selecting every other paragraph or elements that are the last 
+children of their parent element.</p>
 <!--~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~-->
 <!-- :empty  -->
 <!--~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~-->
@@ -2069,8 +2175,8 @@ li:empty {display: none;}
     <tr>
       <td><b>Description</b></td>
       <td>Matches an element when it is the first child of another element. Thus, 
-        <b><i>div:first-child</i></b> will select any div that is the first child 
-        of another element, <i>not</i> the first child element of any div.</td>
+	    <b><i>div:first-child</i></b> will select any div that is the first child of 
+		another element, <i>not</i> the first child element of any div.</td>
     </tr>
     <tr>
       <td><b>Examples</b></td>
@@ -2131,7 +2237,7 @@ h2:first-of-type {color: fuchsia;}
     <tr>
       <td><b>Description</b></td>
       <td>Matches elements based on their human-language encoding. Such language 
-        information must be contained within, or otherwise associated with, the 
+	    information must be contained within, or otherwise associated with, the 
         document---it cannot be assigned from CSS. The handling of :lang is the 
         same as for &vert;= attribute selectors.</td>
     </tr>
@@ -2291,7 +2397,7 @@ tbody tr:nth-last-child(odd) {
 <table style="width:500px;">
   <thead>
     <tr>
-      <th width="200"><h3>:nth-last-of-type<i>a</i>n±<i>b</i>)</h3></th>
+      <th width="200"><h3>:nth-last-of-type(<i>a</i>n±<i>b</i>)</h3></th>
     </tr>
   </thead>
   <tbody>
@@ -2458,10 +2564,9 @@ section article:only-of-type {margin: 2em 0 3em;}
     </tr>
   </tbody>
 </table>
-
-        </section>
-        <section id="ch3-3-neg-pseudo">
-          <h2>The Negation Pseudo-Classes</h2>
+<!--~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~-->
+<h3 id="ch3-3-1">3.3. The Negation Pseudo-Class</h3>
+<!--~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~-->
 <p>There is but one pseudo-class that handles negation, but it is so unique that it 
 deserves its own subsection.</p>
 
@@ -2502,10 +2607,9 @@ ul &ast;:not(li) {text-indent: 2em;}
 &ast;:not(&lbrack;type=&quot;checkbox&quot;&rbrack;):not(&lbrack;type=&quot;radio&quot;&rbrack;) { 
   margin: 0 1em;}
 </pre>
-
-        </section>
-        <section id="ch3-4-inter-pseudo">
-          <h2>Interaction Pseudo-Classes</h2>
+<!--~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~-->
+<h3 id="ch3-4-1">3.4. Interaction Pseudo-Classes</h3>
+<!--~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~-->
 <p>The pseudo-classes listed here are all related to the user's interaction
 with the document: whether styling different link states, highlighting
 an element that's the target of a fragment identifier, or styling form
@@ -2700,10 +2804,9 @@ a:visited {color: purple;}
     </tr>
   </tbody>
 </table>
-
-        </section>
-        <section id="ch3-5-pseudo">
-          <h2>Pseudo-Elements</h2>
+<!--~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~-->
+<h3 id="ch3-5-1">3.5. Pseudo-Elements</h3>
+<!--~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~-->
 <table style="width:500px;">
   <thead>
     <tr>
@@ -2828,10 +2931,9 @@ p:first-letter {text-decoration: underline;}
     </tr>
   </tbody>
 </table>
-
-        </section>
-        <section id="ch3-6-media-queries">
-          <h2>Media Queries</h2>
+<!--~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~-->
+<h3 id="ch3-6-1">3.6. Media Queries</h3>
+<!--~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~-->
 <p>With media queries, an author can define the media environment in which a given 
 stylesheet, or portion of a stylesheet, is used by the browser. In the past, this was 
 handled by setting media types with the media attribute on link elements, or with the 
@@ -3017,10 +3119,9 @@ result is landscape.</p>
 <h4><i>Values:</i> 0 <i>&vert;</i> 1</h4>
 <p>Refers to the presence (or absence) of a grid-based output device, such as a tty 
 terminal. A grid-based device will return 1; otherwise, 0 is returned.</p>
-
-        </section>
-        <section id="ch3-7-feature-queries">
-          <h2>Feature Queries</h2>
+<!--~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~-->
+<h3 id="ch3-7-1">3.7. Feature Queries</h3>
+<!--~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~-->
 <p>A <i>feature query</i> is an at-rule block similar to a media query. The difference is 
 that it queries a user agent about its support for a given property-value combination. If 
 the user agent indicates it supports the query, the rules within the at-block are applied.
@@ -3059,13 +3160,11 @@ like this:</p>
 </pre>
 
 <p><b>Feature Queries</b></p>
-
-        </section>
-	  </section>    <!-- id="ch3-selectors-queries" -->
-      <section id="ch4-prop-ref">
-        <h2>Property Reference</h2>
-        <section id="ch4-1-inh-anim">
-          <h2>Inheritance &amp; Animation</h2>
+<!--~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~-->
+<h2 id="ch4">4. CHAPTER 4 Property Reference</h2>
+<!--~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~-->
+<h3 id="ch4-1-1">4.1. Inheritance and Animation</h3>
+<!--~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~-->
 <p>Each property listed in this chapter has "Inh." and "Anim." values. The
 values "N" (for no) and "Y" (for yes) indicate whether a property is
 <i>inherited</i> by descendant elements and whether the property is
@@ -3073,10 +3172,9 @@ values "N" (for no) and "Y" (for yes) indicate whether a property is
 transition properties. In cases where only some of a property's values
 are animatable, the value given will be "P" (for partial) and more
 details will be given in the property's definition.</p>
-
-        </section>
-        <section id="ch4-2-val-syntax">
-          <h2>Value Syntax Conventions</h2>
+<!--~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~-->
+<h3 id="ch4-2-1">4.2. Value Syntax Conventions</h3>
+<!--~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~-->
 <p>Any words presented in constant width are keywords that must appear
 literally, without quotes. The forward slash (/) and the comma (,) must
 also be used literally.</p>
@@ -3121,10 +3219,9 @@ type like a color is permitted, it will be represented using
   <li>A pair of numbers in curly braces ({M,N}) indicates that the preceding value or 
     bracketed group is repeated at least M and at most N times.</li>
 </ul>
-
-        </section>
-        <section id="ch4-3-univ-values">
-          <h2>Universal Values</h2>
+<!--~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~-->
+<h3 id="ch4-3-1">4.3. Universal Values</h3>
+<!--~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~-->
 <p>Any user agent that has fully implemented the Cascading and Inheritance module will honor 
 the following values for all properties. Think of it as a given property's value syntax 
 being written something like:</p>
@@ -3134,10 +3231,9 @@ being written something like:</p>
 <p>These three keywords are not listed in the following property definitions, for purposes 
 of clarity. The exception is the property all, which accepts <i>only</i> these three 
 keywords as values. For definitions of these keywords' meaning, see Chapter 2.</p>
-
-        </section>
-        <section id="ch4-4-props">
-          <h2>Properties</h2>
+<!--~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~-->
+<h3 id="ch4-4-1">4.4. Properties</h3>
+<!--~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~-->
 <!--~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~-->
 <!-- <b>align-content</b>  <b>Inh. N Anim. N</b>  -->
 <!--~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~-->
@@ -3965,7 +4061,7 @@ body {background-clip: content-box;}
   </tbody>
 </table>
 <!--~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~-->
-<!-- background-color  Inh. N Anim. Y  -->
+<!-- background-color Inh. N Anim. Y  -->
 <!--~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~-->
 <table style="width:500px;">
   <thead>
@@ -4111,7 +4207,7 @@ h1 {background-origin: content-box, padding-box;}
   </tbody>
 </table>
 <!--~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~-->
-<!-- background-position  Inh. N Anim. Y  -->
+<!-- background-position Inh. N Anim. Y  -->
 <!--~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~-->
 <table style="width:500px;">
   <thead>
@@ -4277,7 +4373,7 @@ div.photo {background-size: cover;}
   </tbody>
 </table>
 <!--~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~-->
-<!-- border    Inh. N Anim. P  -->
+<!-- border Inh. N Anim. P  -->
 <!--~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~-->
 <table style="width:500px;">
   <thead>
@@ -4654,7 +4750,7 @@ a:active {border-bottom-width: 2px;}
   </tbody>
 </table>
 <!--~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~-->
-<!-- border-color  Inh. N Anim. Y  -->
+<!-- border-color Inh. N Anim. Y  -->
 <!--~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~-->
 <table style="width:500px;">
   <thead>
@@ -4699,7 +4795,7 @@ a:visited {border-color: maroon;}
   </tbody>
 </table>
 <!--~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~-->
-<!-- border-image  Inh. N Anim. P  -->
+<!-- border-image Inh. N Anim. P  -->
 <!--~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~-->
 <table style="width:500px;">
   <thead>
@@ -5013,7 +5109,7 @@ div#pow{border-image-width: 25px 35;}
   </tbody>
 </table>
 <!--~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~-->
-<!-- border-left  Inh. N Anim. P  -->
+<!-- border-left Inh. N Anim. P  -->
 <!--~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~-->
 <table style="width:500px;">
   <thead>
@@ -5534,7 +5630,7 @@ img {border-style:inset;}
   </tbody>
 </table>
 <!--~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~-->
-<!-- border-top  Inh. N Anim. P  -->
+<!-- border-top Inh. N Anim. P  -->
 <!--~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~-->
 <table style="width:500px;">
   <thead>
@@ -6006,7 +6102,7 @@ rgba(255,0,0,0.5);}
   </tbody>
 </table>
 <!--~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~-->
-<!-- box-sizing  Inh. N Anim. N  -->
+<!-- box-sizing Inh. N Anim. N  -->
 <!--~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~-->
 <table style="width:500px;">
   <thead>
@@ -6198,7 +6294,7 @@ polygon(50% 0, 100% 50%, 50% 100%, 0 50%);}
   </tbody>
 </table>
 <!--~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~-->
-<!-- clip-rule  Inh. N Anim. N  -->
+<!-- clip-rule Inh. N Anim. N  -->
 <!--~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~-->
 <table style="width:500px;">
   <thead>
@@ -6868,7 +6964,7 @@ column;}
   </tbody>
 </table>
 <!--~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~-->
-<!-- flex-flow  Inh. N Anim. N  -->
+<!-- flex-flow Inh. N Anim. N  -->
 <!--~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~-->
 <table style="width:500px;">
   <thead>
@@ -6910,7 +7006,7 @@ nav.sidenav {display: flex; flex-flow: column nowrap;}
   </tbody>
 </table>
 <!--~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~-->
-<!-- flex-grow  Inh. N Anim. Y  -->
+<!-- flex-grow Inh. N Anim. Y  -->
 <!--~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~-->
 <table style="width:500px;">
   <thead>
@@ -6961,7 +7057,7 @@ ol.gallery li {flex-grow: 0;} /&ast; NO growing &ast;/ div span.whatevs
   </tbody>
 </table>
 <!--~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~-->
-<!-- flex-shrink  Inh. N Anim. Y  -->
+<!-- flex-shrink Inh. N Anim. Y  -->
 <!--~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~-->
 <table style="width:500px;">
   <thead>
@@ -7059,7 +7155,7 @@ div.gallery {display: flex; flex-wrap: wrap;} nav.sidenav
   </tbody>
 </table>
 <!--~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~-->
-<!-- float  Inh. N Anim. N  -->
+<!-- float Inh. N Anim. N  -->
 <!--~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~-->
 <table style="width:500px;">
   <thead>
@@ -7472,7 +7568,7 @@ h1.bigtext {font-stretch: ultra-expanded;} caption.meme
   </tbody>
 </table>
 <!--~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~-->
-<!-- font-style  Inh. Y Anim. N  -->
+<!-- font-style Inh. Y Anim. N  -->
 <!--~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~-->
 <table style="width:500px;">
   <thead>
@@ -8103,7 +8199,7 @@ header {grid-column-start: masthead;}
   </tbody>
 </table>
 <!--~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~-->
-<!-- grid-gap  Inh. N Anim. Y  -->
+<!-- grid-gap Inh. N Anim. Y  -->
 <!--~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~-->
 <table style="width:500px;">
   <thead>
@@ -8153,7 +8249,7 @@ div.gallery {display: grid; grid-gap: 2.5vw;}
   </tbody>
 </table>
 <!--~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~-->
-<!-- grid-row  Inh. N Anim. N -->
+<!-- grid-row Inh. N Anim. N -->
 <!--~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~-->
 <table style="width:500px;">
   <thead>
@@ -9774,7 +9870,7 @@ cover, 100%, contain;}
   </tbody>
 </table>
 <!--~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~-->
-<!-- mask-type  Inh. N Anim. N  -->
+<!-- mask-type Inh. N Anim. N  -->
 <!--~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~-->
 <table style="width:500px;">
   <thead>
@@ -10046,7 +10142,7 @@ color-burn, luminosity, darken;}
   </tbody>
 </table>
 <!--~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~-->
-<!-- object-fit  Inh. N Anim. N  -->
+<!-- object-fit Inh. N Anim. N  -->
 <!--~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~-->
 <table style="width:500px;">
   <thead>
@@ -10142,7 +10238,7 @@ img:nth-of-type(2) {object-position: 67% 100%;} img:nth-of-type(3)
   </tbody>
 </table>
 <!--~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~-->
-<!-- opacity  Inh. N Anim. Y  -->
+<!-- opacity Inh. N Anim. Y  -->
 <!--~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~-->
 <table style="width:500px;">
   <thead>
@@ -10191,7 +10287,7 @@ img:nth-of-type(2) {object-position: 67% 100%;} img:nth-of-type(3)
   </tbody>
 </table>
 <!--~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~-->
-<!-- order  Inh. N Anim. Y  -->
+<!-- order Inh. N Anim. Y  -->
 <!--~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~-->
 <table style="width:500px;">
   <thead>
@@ -10242,7 +10338,7 @@ li:nth-of-type(14) {order: -1;}
   </tbody>
 </table>
 <!--~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~-->
-<!-- orphans  Inh. N Anim. Y  -->
+<!-- orphans Inh. N Anim. Y  -->
 <!--~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~-->
 <table style="width:500px;">
   <thead>
@@ -10283,7 +10379,7 @@ li:nth-of-type(14) {order: -1;}
   </tbody>
 </table>
 <!--~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~-->
-<!-- outline  Inh. N Anim. P  -->
+<!-- outline Inh. N Anim. P  -->
 <!--~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~-->
 <table style="width:500px;">
   <thead>
@@ -10334,7 +10430,7 @@ form:focus {outline: outset cyan 0.25em;}
   </tbody>
 </table>
 <!--~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~-->
-<!-- outline-color  Inh. N Anim. Y  -->
+<!-- outline-color Inh. N Anim. Y  -->
 <!--~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~-->
 <table style="width:500px;">
   <thead>
@@ -10515,7 +10611,7 @@ form:focus {outline-width: 0.25em;}
   </tbody>
 </table>
 <!--~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~-->
-<!-- overflow  Inh. N Anim. N  -->
+<!-- overflow Inh. N Anim. N  -->
 <!--~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~-->
 <table style="width:500px;">
   <thead>
@@ -10611,7 +10707,7 @@ object {overflow: visible scroll;}
   </tbody>
 </table>
 <!--~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~-->
-<!-- overflow-x  Inh. N Anim. N  -->
+<!-- overflow-x Inh. N Anim. N  -->
 <!--~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~-->
 <table style="width:500px;">
   <thead>
@@ -10654,7 +10750,7 @@ object {overflow-x: visible;}
   </tbody>
 </table>
 <!--~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~-->
-<!-- overflow-y  Inh. N Anim. N  -->
+<!-- overflow-y Inh. N Anim. N  -->
 <!--~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~-->
 <table style="width:500px;">
   <thead>
@@ -10697,7 +10793,7 @@ object {overflow-y: scroll;}
   </tbody>
 </table>
 <!--~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~-->
-<!-- padding  Inh. N Anim. Y  -->
+<!-- padding Inh. N Anim. Y  -->
 <!--~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~-->
 <table style="width:500px;">
   <thead>
@@ -10744,7 +10840,7 @@ pre {padding: 0.75em 0.5em 1em 0.5em;}
   </tbody>
 </table>
 <!--~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~-->
-<!-- padding-bottom  Inh. N Anim. Y  -->
+<!-- padding-bottom Inh. N Anim. Y  -->
 <!--~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~-->
 <table style="width:500px;">
   <thead>
@@ -10790,7 +10886,7 @@ h1 {padding-bottom: 2%;}
   </tbody>
 </table>
 <!--~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~-->
-<!-- padding-left  Inh. N Anim. Y  -->
+<!-- padding-left Inh. N Anim. Y  -->
 <!--~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~-->
 <table style="width:500px;">
   <thead>
@@ -10930,7 +11026,7 @@ ol {padding-right: 5em;}
   </tbody>
 </table>
 <!--~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~-->
-<!-- page  Inh. N Anim. N  -->
+<!-- page Inh. N Anim. N  -->
 <!--~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~-->
 <table style="width:500px;">
   <thead>
@@ -10977,7 +11073,7 @@ table.summary {page: wide;}
   </tbody>
 </table>
 <!--~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~-->
-<!-- page-break-after  Inh. N Anim.  -->
+<!-- page-break-after Inh. N Anim.  -->
 <!--~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~-->
 <table style="width:500px;">
   <thead>
@@ -11031,7 +11127,7 @@ avoid;}
   </tbody>
 </table>
 <!--~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~-->
-<!-- page-break-before  Inh. N Anim. N  -->
+<!-- page-break-before Inh. N Anim. N  -->
 <!--~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~-->
 <table style="width:500px;">
   <thead>
@@ -11082,7 +11178,7 @@ h2 {page-break-before: avoid;}
   </tbody>
 </table>
 <!--~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~-->
-<!-- page-break-inside  Inh. Y Anim. N  -->
+<!-- page-break-inside Inh. Y Anim. N  -->
 <!--~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~-->
 <table style="width:500px;">
   <thead>
@@ -11132,7 +11228,7 @@ table {page-break-inside:
   </tbody>
 </table>
 <!--~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~-->
-<!-- perspective  Inh. N Anim. Y  -->
+<!-- perspective Inh. N Anim. Y  -->
 <!--~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~-->
 <table style="width:500px;">
   <thead>
@@ -11177,7 +11273,7 @@ body {perspective: 250;} /&ast; middlin&apos; &ast;/
   </tbody>
 </table>
 <!--~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~-->
-<!-- perspective-origin  Inh. N Anim. P  -->
+<!-- perspective-origin Inh. N Anim. P  -->
 <!--~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~-->
 <table style="width:500px;">
   <thead>
@@ -11222,7 +11318,7 @@ div {perspective-origin: 0 50%;}
   </tbody>
 </table>
 <!--~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~-->
-<!-- position Inh.  N Anim. N  -->
+<!-- position Inh. N Anim. N  -->
 <!--~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~-->
 <table style="width:500px;">
   <thead>
@@ -11267,7 +11363,7 @@ div {perspective-origin: 0 50%;}
   </tbody>
 </table>
 <!--~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~-->
-<!-- quotes  Inh. Y Anim. N  -->
+<!-- quotes Inh. Y Anim. N  -->
 <!--~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~-->
 <table style="width:500px;">
   <thead>
@@ -11312,7 +11408,7 @@ q:lang(fr) {quotes: &quot;«&quot; &quot;»&quot; &quot;‹&quot; &quot;›&quot
   </tbody>
 </table>
 <!--~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~-->
-<!-- resize  Inh. N Anim. N  -->
+<!-- resize Inh. N Anim. N  -->
 <!--~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~-->
 <table style="width:500px;">
   <thead>
@@ -11353,7 +11449,7 @@ q:lang(fr) {quotes: &quot;«&quot; &quot;»&quot; &quot;‹&quot; &quot;›&quot
   </tbody>
 </table>
 <!--~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~-->
-<!-- right  Inh. N Anim. P  -->
+<!-- right Inh. N Anim. P  -->
 <!--~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~-->
 <table style="width:500px;">
   <thead>
@@ -11398,7 +11494,7 @@ div#footer {position: fixed; right: 0;}
   </tbody>
 </table>
 <!--~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~-->
-<!--  shape-image-threshold  Inh. N Anim. Y  -->
+<!-- shape-image-threshold Inh. N Anim. Y  -->
 <!--~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~-->
 <table style="width:500px;">
   <thead>
@@ -11447,7 +11543,7 @@ img.floated {shape-image-threshold: 0.1;}
   </tbody>
 </table>
 <!--~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~-->
-<!-- shape-margin  Inh. N Anim. Y  -->
+<!-- shape-margin Inh. N Anim. Y  -->
 <!--~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~-->
 <table style="width:500px;">
   <thead>
@@ -11496,7 +11592,7 @@ img.floated {shape-image-threshold: 0.1;}
   </tbody>
 </table>
 <!--~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~-->
-<!-- shape-outside  Inh. N Anim. P  -->
+<!-- shape-outside Inh. N Anim. P  -->
 <!--~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~-->
 <table style="width:500px;">
   <thead>
@@ -11546,7 +11642,7 @@ img.curio {shape-outside: circle(25px at 50% 50%);} aside.diamond
   </tbody>
 </table>
 <!--~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~-->
-<!-- size  Inh. N Anim. N  -->
+<!-- size Inh. N Anim. N  -->
 <!--~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~-->
 <table style="width:500px;">
   <thead>
@@ -11603,7 +11699,7 @@ landscape;}
   </tbody>
 </table>
 <!--~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~-->
-<!--tab-size  Inh. Y Anim. Y</h3> -->
+<!-- tab-size Inh. Y Anim. Y  -->
 <!--~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~-->
 <table style="width:500px;">
   <thead>
@@ -11647,7 +11743,7 @@ p.typer {tab-size: 0.25in;}
   </tbody>
 </table>
 <!--~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~-->
-<!-- table-layout  Inh. Y Anim. N  -->
+<!-- table-layout Inh. Y Anim. N  -->
 <!--~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~-->
 <table style="width:500px;">
   <thead>
@@ -11693,7 +11789,7 @@ table.directory {table-display: auto;}
   </tbody>
 </table>
 <!--~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~-->
-<!-- text-align  Inh. Y Anim. N  -->
+<!-- text-align Inh. Y Anim. N  -->
 <!--~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~-->
 <table style="width:500px;">
   <thead>
@@ -11740,7 +11836,7 @@ h4 {text-align: center;}
   </tbody>
 </table>
 <!--~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~-->
-<!-- text-align-last  Inh. Y Anim. N  -->
+<!-- text-align-last Inh. Y Anim. N  -->
 <!--~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~-->
 <table style="width:500px;">
   <thead>
@@ -11786,7 +11882,7 @@ h4 {text-align-last: right;}
   </tbody>
 </table>
 <!--~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~-->
-<!-- text-decoration  Inh. N Anim. N  -->
+<!-- text-decoration Inh. N Anim. N  -->
 <!--~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~-->
 <table style="width:500px;">
   <thead>
@@ -11845,7 +11941,7 @@ u.old {text-decoration: line-through underline;}
   </tbody>
 </table>
 <!--~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~-->
-<!-- text-indent  Inh. Y Anim. Y  -->
+<!-- text-indent Inh. Y Anim. Y  -->
 <!--~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~-->
 <table style="width:500px;">
   <thead>
@@ -11897,7 +11993,7 @@ h2 {text-indent: −25px;}
   </tbody>
 </table>
 <!--~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~-->
-<!-- text-orientation  Inh. Y Anim. Y  -->
+<!-- text-orientation Inh. Y Anim. Y  -->
 <!--~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~-->
 <table style="width:500px;">
   <thead>
@@ -11947,7 +12043,7 @@ h2 {text-indent: −25px;}
   </tbody>
 </table>
 <!--~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~-->
-<!-- text-rendering  Inh. Y Anim. Y  -->
+<!-- text-rendering Inh. Y Anim. Y  -->
 <!--~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~-->
 <table style="width:500px;">
   <thead>
@@ -12043,7 +12139,7 @@ h2 {text-shadow: 0 −3px 0.5em blue;}
   </tbody>
 </table>
 <!--~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~-->
-<!-- text-transform  Inh. Y Anim. N  -->
+<!-- text-transform Inh. Y Anim. N  -->
 <!--~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~-->
 <table style="width:500px;">
   <thead>
@@ -12088,7 +12184,7 @@ h1 {text-transform: uppercase;}
   </tbody>
 </table>
 <!--~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~-->
-<!-- top  Inh. N Anim. P  -->
+<!-- top Inh. N Anim. P  -->
 <!--~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~-->
 <table style="width:500px;">
   <thead>
@@ -12148,7 +12244,7 @@ sub {position: relative; top: 0.5em;
   </tbody>
 </table>
 <!--~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~-->
-<!-- transform  Inh. N Anim. P  -->
+<!-- transform Inh. N Anim. P  -->
 <!--~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~-->
 <table style="width:500px;">
   <thead>
@@ -12205,7 +12301,7 @@ li {transform: scale3d(1.2,1.7,0.85);}
   </tbody>
 </table>
 <!--~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~-->
-<!-- transform-origin   Inh. N Anim. P  -->
+<!-- transform-origin Inh. N Anim. P  -->
 <!--~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~-->
 <table style="width:500px;">
   <thead>
@@ -12304,7 +12400,7 @@ li {transform-style: preserve-3d;}
   </tbody>
 </table>
 <!--~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~-->
-<!-- transition  Inh. N Anim. N  -->
+<!-- transition Inh. N Anim. N  -->
 <!--~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~-->
 <table style="width:500px;">
   <thead>
@@ -12403,7 +12499,7 @@ h1 {transition-delay: 0;}
   </tbody>
 </table>
 <!--~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~-->
-<!-- transition-duration  Inh. N Anim. N  -->
+<!-- transition-duration Inh. N Anim. N  -->
 <!--~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~-->
 <table style="width:500px;">
   <thead>
@@ -12447,7 +12543,7 @@ h1 {transition-duration: 10s;}
   </tbody>
 </table>
 <!--~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~-->
-<!-- transition-property  Inh. N Anim. N  -->
+<!-- transition-property Inh. N Anim. N  -->
 <!--~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~-->
 <table style="width:500px;">
   <thead>
@@ -12496,7 +12592,7 @@ h1 {transition-property: all;}
   </tbody>
 </table>
 <!--~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~-->
-<!-- transition-timing-function  Inh. N Anim. N  -->
+<!-- transition-timing-function Inh. N Anim. N  -->
 <!--~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~-->
 <table style="width:500px;">
   <thead>
@@ -12547,7 +12643,7 @@ h1 {transition-timing-function: linear;}
   </tbody>
 </table>
 <!--~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~-->
-<!-- unicode-bidi  Inh. N Anim. Y  -->
+<!-- unicode-bidi Inh. N Anim. Y  -->
 <!--~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~-->
 <table style="width:500px;">
   <thead>
@@ -12588,7 +12684,7 @@ h1 {transition-timing-function: linear;}
   </tbody>
 </table>
 <!--~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~-->
-<!-- vertical-align  Inh. N Anim. P  -->
+<!-- vertical-align Inh. N Anim. P  -->
 <!--~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~-->
 <table style="width:500px;">
   <thead>
@@ -12644,7 +12740,7 @@ sup {vertical-align: super;}
   </tbody>
 </table>
 <!--~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~-->
-<!-- visibility  Inh. Y Anim. N  -->
+<!-- visibility Inh. Y Anim. N  -->
 <!--~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~-->
 <table style="width:500px;">
   <thead>
@@ -12739,7 +12835,7 @@ tt {white-space: pre;}
   </tbody>
 </table>
 <!--~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~-->
-<!-- widows  Inh. N Anim. Y  -->
+<!-- widows Inh. N Anim. Y  -->
 <!--~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~-->
 <table style="width:500px;">
   <thead>
@@ -12831,7 +12927,7 @@ table {width: 80%;}
   </tbody>
 </table>
 <!--~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~-->
-<!-- word-break  Inh. Y Anim. Y  -->
+<!-- word-break Inh. Y Anim. Y  -->
 <!--~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~-->
 <table style="width:500px;">
   <thead>
@@ -12924,7 +13020,7 @@ p.cramped {word-spacing: −0.5em;}
   </tbody>
 </table>
 <!--~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~-->
-<!-- writing-mode  Inh. Y Anim. Y</h4>  -->
+<!-- writing-mode Inh. Y Anim. Y  -->
 <!--~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~-->
 <table style="width:500px;">
   <thead>
@@ -12973,7 +13069,7 @@ p.cramped {word-spacing: −0.5em;}
   </tbody>
 </table>
 <!--~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~-->
-<!--z-index</h3> -->
+<!-- z-index -->
 <!--~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~-->
 <table style="width:500px;">
   <thead>
@@ -13011,71 +13107,37 @@ p.cramped {word-spacing: −0.5em;}
     </tr>
   </tbody>
 </table>
-
-        </section>
-      </section>  <!-- id="ch4-prop-ref" -->
-    </div>  <!-- end of book -->
-    <nav class="section-nav">
-      <ol>
-	    <li><a href="#ch1-basic-concepts">1. Basic Concepts</a>
-	    <ul>
-          <li class=""><a href="#ch1-1-adding-style">Adding Style to HTML</a></li>
-          <li class=""><a href="#ch1-2-rul-structure">Rule Structure</a></li>
-          <li class=""><a href="#ch1-3-at-rules">At-rules</a></li>
-          <li class=""><a href="#ch1-4-comments">Comments</a></li>
-          <li class=""><a href="#ch1-5-style-precedence">Style Precedence</a></li>
-          <li class=""><a href="#ch1-6-element-class">Element Classification</a></li>
-          <li class=""><a href="#ch1-7-element-display-roles">Element Display Roles</a></li>
-          <li class=""><a href="#ch1-8-basic-visual-layout">Basic Visual Layout</a></li>
-          <li class=""><a href="#ch1-9-floating">Floating</a></li>
-          <li class=""><a href="#ch1-10-positioning">Positioning</a></li>
-          <li class=""><a href="#ch1-11-flexible-box-layout">Flexible Box Layout</a></li>
-          <li class=""><a href="#ch1-12-grid-layout">Grid Layout</a></li>
-          <li class=""><a href="#ch1-13-table-layout">Table Layout</a></li>
-		</ul>
-		</li>  <!-- ch1-basic-concepts -->
-        <li><a href="#ch2-values">2. Values</a>
-        <ul>
-            <li class=""><a href="#ch2-1-keywords">Keywords</a></li>
-            <li class=""><a href="#ch2-2-color">Color Values</a></li>
-            <li class=""><a href="#ch2-3-number">Number Values</a></li>
-            <li class=""><a href="#ch2-4-perc">Percentage Values</a></li>
-            <li class=""><a href="#ch2-5-length">Length Values</a></li>
-            <li class=""><a href="#ch2-6-fraction">Fraction Values</a></li>
-            <li class=""><a href="#ch2-7-uris">URIs</a></li>
-            <li class=""><a href="#ch2-8-angles">Angles</a></li>
-            <li class=""><a href="#ch2-9-times">Times</a></li>
-            <li class=""><a href="#ch2-10-frequencies">Frequencies</a></li>
-            <li class=""><a href="#ch2-11-position">Position</a></li>
-            <li class=""><a href="#ch2-12-strings">Strings</a></li>
-            <li class=""><a href="#ch2-13-identifiers">Identifiers</a></li>
-            <li class=""><a href="#ch2-14-calc">Calculation Values</a></li>
-            <li class=""><a href="#ch2-15-var">Variable Values</a></li>
-          </ul>
-        </li>  <!-- ch2-values -->
-        <li><a href="#ch3-sel-queries">3. Selectors &amp; Queries</a>
-          <ul>
-            <li class=""><a href="#ch3-1-sel">Selectors</a></li>
-            <li class=""><a href="#ch3-2-struct-pseudo">Structural Pseudo-Classes</a></li>
-            <li class=""><a href="#ch3-3-neg-pseudo">The Negation Pseudo-Classes</a></li>
-            <li class=""><a href="#ch3-4-inter-pseudo">Interaction Pseudo-Classes</a></li>
-            <li class=""><a href="#ch3-5-pseudo">Pseudo-Elements</a></li>
-            <li class=""><a href="#ch3-6-media-queries">Media Queries</a></li>
-            <li class=""><a href="#ch3-7-feature-queries">Feature Queries</a></li>
-		  </ul>
-		</li>  <!-- ch3-sel-queries -->
-        <li><a href="#ch4-prop-ref">4. Property Reference</a>
-          <ul>
-            <li class=""><a href="#ch4-1-inh-anim">Inheritance &amp; Animation</a></li>
-            <li class=""><a href="#ch4-2-val-syntax">Value Syntax Conventions</a></li>
-            <li class=""><a href="#ch4-3-univ-vals">Universal Values</a></li>
-            <li class=""><a href="#ch4-4-prop">Properties</a></li>
-		  </ul>
-		</li>  <!-- ch4-prop-ref -->
-      </ol>
-    </nav>  <!-- class="section-nav" -->
-  </main>
-  <script  src="./js/scripts.js"></script>
-
 </body>
 </html>
+
+<!--
+<table style="width:500px;">
+  <thead>
+    <tr>
+      <th width="200"><h3></h3></th>
+      <th align="right"><h3></h3></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><b></b></td>
+      <td></td>
+    </tr>
+    <tr>
+      <td><b></b></td>
+      <td></td>
+    </tr>
+    <tr>
+      <td><b></b></td>
+      <td></td>
+    </tr>
+    <tr>
+      <td><b>Example</b></td>
+      <td>
+<pre>
+</pre>
+      </td>
+    </tr>
+  </tbody>
+</table>
+-->
